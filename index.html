@@ -24,19 +24,19 @@
     </div>
     <div class="calculate">
         <h2>Немного о себе...</h2>
-        <span style="display: block; text-align: center; color: red; margin-bottom: 30px; font-size: 10px;">Внимание! Секции со звёздочкой обязательны к заполнению!</span>
+        <span id ="predupr" style="display: block; text-align: center; color: red; margin-bottom: 30px; font-size: 10px; overflow: hidden; height: .1px; transition: .5s ease-in-out">Внимание! Секции со звёздочкой обязательны к заполнению КОРРЕКТНЫМИ данными!</span>
         <div class="calculate__wrap">
             <div class="hum">
                 <div class="line">
                     <span>Масса(кг):</span>
                     <div class="massdiv">
-                    <input type="text" id="mass">
+                    <input type="text" id="mass" maxlength="3">
                     </div>
                 </div>
                 <div class="line">
                     <span>Рост(см):</span>
                     <div class="heigthdiv">
-                    <input type="text" id="heigth">
+                    <input type="text" id="heigth" maxlength="3">
                     </div>
                 </div> 
                 <span id = "gender">Пол:</span> <br>

@@ -71,7 +71,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         var middle = document.getElementById('middle');
         var fade = document.getElementById('fade');
         var drish = document.getElementById('drish');
-        if (mass.value === ""){
+        document.getElementById('predupr').style.height = "15px";
+        if (mass.value.match(/^([2-9]\d{1}){1}$|^([1-2]\d{2}){1}$/) === null){
             document.getElementsByClassName('massdiv')[0].classList.add('danger');
             possible[0] = 1;
         }
@@ -79,7 +80,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.getElementsByClassName('massdiv')[0].classList.remove('danger');
             possible[0] = 0;
         }
-        if (heigth.value === ""){
+        if (heigth.value.match(/^1[3-9][0-9]$|^2[0-5][0-9]$/) === null){
             document.getElementsByClassName('heigthdiv')[0].classList.add('danger');
             possible[1] = 1;
         }
