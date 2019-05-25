@@ -1,0 +1,332 @@
+body{
+    font-family: 'Macondo Swash Caps', cursive;
+    background-color: wheat;
+    padding: 0;
+    margin: 0;
+}
+
+.wrap{
+    width: 60%;
+    margin: 0 auto;
+}
+
+header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    color: #5a1430;
+}
+header h1{
+    font-size: 50px;
+}
+.calculate{
+    margin-bottom: 80px;
+}
+.calculate h2{
+    text-align: center;
+    color: #5a1430;
+    font-size: 30px;
+    margin-bottom: 0;
+}
+.calculate__wrap{
+    display: flex;
+    justify-content: space-around;
+    width: 50%;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    color: #5a1430;
+}
+.hum{
+    width: 30%;
+}
+#drish{
+    margin-bottom: 20px;
+}
+.calculate input[type=text]{
+    float: left;
+    text-align: center;
+    width: 90%;
+    height: 95%;
+    outline: none;
+    font-weight: bold;
+    border: none;
+    border: 1px solid black;
+}
+.massdiv, .heigthdiv{
+    width: 50%;
+}
+.calculate input[type=text]:focus{
+    background-color: #76c248;
+}
+
+.calculate a{
+    display: block;
+    margin: 0 auto;
+    width: 10%;
+    text-align: center;
+    text-decoration: none;
+    color: #5a1430;
+    background-color: #76c248;
+    /* padding: 5px; */
+    /* border: 1px solid black; */
+    height: .1px;
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+}
+.news, .lifehacks{
+    width: 50%;
+    margin: 0 auto;
+    color: #5a1430;
+}
+.news_wrap, .lifehacks_wrap{
+    overflow-y: scroll;
+    padding-right: 20px;
+    height: 70vh;
+    width: 70%;
+    margin: 0 auto;
+}
+.news_wrap::-webkit-scrollbar{
+    margin-left: 40px;
+    background-color: #76c248;
+    border-radius: 25px;
+    width: 3px;
+}
+.news_wrap::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(45deg, #76c248, black);
+    border-radius: 25px;
+}
+footer{
+    text-align: center;
+    background-color: #43811d;
+    padding-bottom: 80px;
+    color: white;
+}
+footer h1{
+    font-size: 50px;
+}
+.footer_info{
+    width: 40%;
+}
+.footer{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    text-align: center;
+}
+footer img{
+    width: 10%;
+    height: 10%;
+}
+#footer_btn{
+    display: block;
+    height: 40px;
+    background: linear-gradient(45deg, red, black);
+    line-height: 40px;
+    padding: 5px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border-radius: 15px;
+}
+.footer_contacts_href{
+    overflow: hidden;
+    transition: all .5s ease-in-out;
+}
+.footer_contacts_href a{
+    display: block;
+    height: 30px;
+    width: 50%;
+    margin: 0 auto;
+}
+.close{
+    height: .1px;
+}
+.open{
+    height: 80px;
+}
+.new span, .lifehack span{
+    text-decoration: underline;
+}
+.new, .lifehack{
+    background-size: cover;
+    width: 100%;
+    height: 30vh;
+    text-align: center;
+    padding-top: 30%;
+    padding-bottom: 25%;
+    margin-bottom: 20px;
+    color: white;
+}
+.news_read, .lifehack_read{
+    display: block;
+    width: 30%;
+    margin: 0 auto;
+    margin-top: 10%;
+    text-decoration: none;
+    color: black;
+    background-color: white;
+}
+.danger::after{
+    content: '*';
+    color: red;
+}
+.lifehacks_wrap::-webkit-scrollbar{
+    margin-left: 40px;
+    background-color: red;
+    border-radius: 25px;
+    width: 3px;
+}
+.lifehacks_wrap::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(45deg, red, wheat);
+    border-radius: 25px;
+}
+.lifehacks{
+    color: wheat;
+}
+.forum{
+    width: 40%;
+    margin: 0 auto;
+}
+.forum input, .forum textarea{
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+    padding: 5px;
+    margin-top: 15px;
+    border: none;
+}
+.forum textarea{
+    resize: none;
+}
+.mess{
+    width: 90%;
+    color: wheat;
+}
+.mess_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#send{
+    display: block;
+    height: 50px;
+    width: 80%;
+    margin: 0 auto;
+    margin-top: 15px;
+    font-size: 30px;
+    font-family: 'Macondo Swash Caps', cursive;
+    margin-bottom: 90px;
+    outline: none;
+}
+.container_for_mess{
+    height: 400px;
+    overflow-y: scroll;
+}
+.container_for_mess::-webkit-scrollbar{
+    margin-left: 40px;
+    background-color: #76c248;
+    border-radius: 25px;
+    width: 3px;
+}
+.container_for_mess::-webkit-scrollbar-thumb{
+    background-color: black;
+    border-radius: 25px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+nav span{
+    border: 2px solid black;
+    border-bottom: 2px solid black;
+    padding: 15px;
+    cursor: pointer;
+}
+.selected{
+    color: black;
+    background-color: #76c248;
+    border-bottom: none;
+    border-top-left-radius: 15px;
+    border-top-right-radius: 15px;
+    transition: all .2s ease-in-out;
+}
+.line{
+    display: flex;
+    justify-content: space-between;
+}
+
+@media (max-width: 1024px)
+{
+    .wrap{
+        width: 80%;
+    }
+    .calculate__wrap{
+        width: 80%;
+    }
+    .hum{
+        width: 50%;
+    }
+    .diets{
+        width: 50%;
+        margin: 0 auto;
+    }
+    .news{
+        width: 90%;
+    }
+    .lifehacks{
+        width: 90%;
+    }
+    .forum{
+        width: 90%;
+    }
+    #calC{
+        width: 60%;
+    }
+}
+@media (max-width: 680px)
+{
+    .wrap{
+        width: 100%;
+    }
+    .calculate__wrap{
+        display: block;
+    }
+    .diets{
+        width: 80%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .hum{
+        width: 80%;
+        margin: 0 auto;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+        font-size: 10px;
+        margin-bottom: 20px;
+    }
+    nav span{
+        padding: 10px;
+    }
+    header{
+        display: block;
+    }
+    header h1{
+        text-align: center;
+    }
+}
