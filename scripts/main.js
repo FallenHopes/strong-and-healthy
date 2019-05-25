@@ -71,7 +71,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         var middle = document.getElementById('middle');
         var fade = document.getElementById('fade');
         var drish = document.getElementById('drish');
-        document.getElementById('predupr').style.height = "15px";
         if (mass.value.match(/^([2-9]\d{1}){1}$|^([1-2]\d{2}){1}$/) === null){
             document.getElementsByClassName('massdiv')[0].classList.add('danger');
             possible[0] = 1;
@@ -119,11 +118,13 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.getElementById('calC').style.padding = "5px";
             document.getElementById('calC').style.height = "25px";
             document.getElementById('calC').style.borderTop = "1px solid black";
+            document.getElementById('predupr').style.height = ".1px"; 
         }
         else{
             document.getElementById('calC').style.padding = "0";
             document.getElementById('calC').style.height = ".1px";
-            document.getElementById('calC').style.borderTop = "none";        
+            document.getElementById('calC').style.borderTop = "none";       
+            document.getElementById('predupr').style.height = "15px";
         }
     });
     // Эта кнопка для выезжающих контактов в футере
