@@ -11,5 +11,6 @@ Website with healty information for all people
 
    $ git add .
    $ git commit -m "Имя проектыча"
+   $ git push
 
 Ну всё, красавчик, умеешь с гитосом работать)
