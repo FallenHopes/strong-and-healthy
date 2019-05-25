@@ -10,7 +10,9 @@ Website with healty information for all people
 Поработал такой, молодец, хочешь выгрузить изменения на хубус)
 
    $ git add .
+   
    $ git commit -m "Имя проектыча"
+   
    $ git push
 
 Ну всё, красавчик, умеешь с гитосом работать)
