@@ -19,6 +19,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             $('#errorIdea').text("Введите сообщение не менее 10 символов")
             return false;
         }
+        console.log(idea);
         $('#errorIdea').text("");
         $.ajax({
             url: 'ajax/mail.php',
