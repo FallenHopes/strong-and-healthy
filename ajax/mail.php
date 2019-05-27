@@ -4,6 +4,6 @@
     $idea = $_POST['idea'];
     $subject = "=?utf-8?B?".base64_encode("Администрация Strong And Healthy")."?=";
     $headers = "From: $email\r\nReply-to: $email\r\nContent-type: text/html; charset=utf-8\r\n";
-    $success = mail("admin@strongandhealthy.com", $subject, $message, $headers);
+    $success = mail("admin@strongandhealthy.com", $subject, $idea, $headers);
     echo $success;    
 ?>

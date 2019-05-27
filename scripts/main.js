@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         e.preventDefault();
         var name = $('#personname').val().trim();
         var email = $('#personemail').val().trim();
-        var message = $('#idea').val().trim();
+        var idea = $('#idea').val();
         if (name === "")
         {
             $('#errorIdea').text("Введите ваше имя");
@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             $('#errorIdea').text("Введите ваш email");
             return false;
         }
-        else if (message.length < 10)
+        else if (idea.length < 10)
         {
             $('#errorIdea').text("Введите сообщение не менее 10 символов")
             return false;
@@ -24,7 +24,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             url: 'ajax/mail.php',
             type: 'POST',
             cache: false,
-            data: { 'name': name, 'email': email, 'message': message },
+            data: { 'name': name, 'email': email, 'idea': idea },
             dataType: 'html',
             beforeSend: function(){
                 $('#sendIdea').prop("disable", true);
