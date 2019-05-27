@@ -1,4 +1,46 @@
 document.addEventListener('DOMContentLoaded', ()=>{
+    $('#sendIdea').on('click', (e) => {
+        e.preventDefault();
+        var name = $('#personname').val().trim();
+        var email = $('#personemail').val().trim();
+        var message = $('#idea').val().trim();
+        if (name === "")
+        {
+            $('#errorIdea').text("Введите ваше имя");
+            return false;
+        }
+        else if(email === "")
+        {
+            $('#errorIdea').text("Введите ваш email");
+            return false;
+        }
+        else if (message.length < 10)
+        {
+            $('#errorIdea').text("Введите сообщение не менее 10 символов")
+            return false;
+        }
+        $('#errorIdea').text("");
+        $.ajax({
+            url: 'ajax/mail.php',
+            type: 'POST',
+            cache: false,
+            data: { 'name': name, 'email': email, 'message': message },
+            dataType: 'html',
+            beforeSend: function(){
+                $('#sendIdea').prop("disable", true);
+            },
+            success: function(data) {
+                if (!data)
+                {
+                    alert('Не удалось отправить запрос на сервер!');
+                }
+                else{
+                    $('form').trigger("reset");
+                }
+                $('#sendIdea').prop("disable", false);
+            }
+        });
+    });
     // Тут переключатель сайта по секциям. Так как переходить по ссылкам затратно и отнимает время, переключатель будет быстрее, думаю)
     document.getElementsByTagName('nav')[0].addEventListener('click', (e)=>{
         e.preventDefault();
@@ -8,6 +50,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         var news = document.getElementsByClassName('news')[0];
         var lifehacks = document.getElementsByClassName('lifehacks')[0];
         var forum = document.getElementsByClassName('forum')[0];
+        var ideas = document.getElementsByClassName('ideas')[0];
         el.className = "selected";
         if (el.id === "diets")
         {
@@ -15,6 +58,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             news.setAttribute('hidden', 'true');
             lifehacks.setAttribute('hidden', 'true');
             forum.setAttribute('hidden', 'true');
+            ideas.setAttribute('hidden', 'true');
             for (var i = 0; i < document.getElementsByTagName('nav')[0].getElementsByTagName('span').length; i++){
                 document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "black";
             }
@@ -28,6 +72,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             news.removeAttribute('hidden');
             lifehacks.setAttribute('hidden', 'true');
             forum.setAttribute('hidden', 'true');
+            ideas.setAttribute('hidden', 'true');
             for (var i = 0; i < document.getElementsByTagName('nav')[0].getElementsByTagName('span').length; i++){
                 document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "black";
             }
@@ -41,6 +86,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             news.setAttribute('hidden', 'true');
             lifehacks.removeAttribute('hidden');
             forum.setAttribute('hidden', 'true');
+            ideas.setAttribute('hidden', 'true');
             for (var i = 0; i < document.getElementsByTagName('nav')[0].getElementsByTagName('span').length; i++){
                 document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "wheat";
             }
@@ -54,8 +100,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
             news.setAttribute('hidden', 'true');
             lifehacks.setAttribute('hidden', 'true');
             forum.removeAttribute('hidden');
+            ideas.setAttribute('hidden', 'true');
             document.body.style.backgroundColor = "#76c248";
             blockofmess.scrollTo(100, blockofmess.scrollHeight);
+        }
+        else if(el.id === "ideas")
+        {
+            calculate.setAttribute('hidden', 'true');
+            news.setAttribute('hidden', 'true');
+            lifehacks.setAttribute('hidden', 'true');
+            forum.setAttribute('hidden', 'true');
+            ideas.removeAttribute('hidden');
+            document.body.style.backgroundColor = "white";
+            document.getElementsByTagName('header')[0].style.color = "black";
+            for (var i = 0; i < document.getElementsByTagName('nav')[0].getElementsByTagName('span').length; i++){
+                document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "black";
+            }
         }
     });
     // Здесь целый блок расчёта и выбора PDF. Я здесь реализовывал лишь доступ к кнопке расчёта и подсветку красными звёздочками недостающих

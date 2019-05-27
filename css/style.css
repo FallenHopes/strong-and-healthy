@@ -231,7 +231,48 @@ footer img{
     background-color: black;
     border-radius: 25px;
 }
-
+.ideas{
+    text-align: center;
+    width: 60%;
+    margin: 0 auto;
+}
+.ideas input, .ideas textarea{
+    width: 100%;
+    border: 1px solid black;
+    resize: none;
+    margin-bottom: 15px;
+    padding: 10px;
+    outline: none;
+    transition: all .5s ease-in-out;
+}
+.ideas input{
+    text-align: center;
+    line-height: 1.5;
+    font-size: 20px;
+}
+.ideas textarea{
+    font-size: 15px;
+}
+.ideas input:focus, .ideas textarea:focus{
+    border-radius: 15px;
+    background-color: #76c248;
+}
+.ideas button{
+    display: block;
+    width: 50%;
+    margin: 0 auto;
+    line-height: 3;
+    border: 2px solid black;
+    border-radius: 15px;
+    font-size: 20px;
+    font-weight: bold;
+    transition: all .5s ease-in-out;
+}
+.ideas button:hover{
+    border-color: #5a1430;
+    background-color: #76c248;
+    color: #5a1430;
+}
 
 
 
