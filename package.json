@@ -1,0 +1,19 @@
+{
+  "name": "strong-and-healty",
+  "version": "1.0.0",
+  "description": "Project for your health",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/FallenHopes/strong-and-healty.git"
+  },
+  "author": "Vladislav Serebrow",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/FallenHopes/strong-and-healty/issues"
+  },
+  "homepage": "https://github.com/FallenHopes/strong-and-healty#readme"
+}
