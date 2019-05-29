@@ -3,7 +3,6 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 
-server.listen(3000);
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
