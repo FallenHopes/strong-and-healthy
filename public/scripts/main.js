@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         $('#errorIdea').text("");
         $.ajax({
-            url: 'ajax/mail.php',
+            url: '../ajax/mail.php',
             type: 'POST',
             cache: false,
             data: { 'name': name, 'email': email, 'idea': idea },
