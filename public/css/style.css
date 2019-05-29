@@ -206,6 +206,10 @@ footer img{
     align-items: center;
     justify-content: space-between;
 }
+.mess_wrap p img{
+    width: 50%;
+    height: 100px;
+}
 #send{
     display: block;
     height: 50px;
@@ -273,7 +277,6 @@ footer img{
     background-color: #76c248;
     color: #5a1430;
 }
-
 
 
 
