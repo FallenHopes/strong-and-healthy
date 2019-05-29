@@ -21,8 +21,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         $('#errorIdea').text("");
         $.ajax({
-            url: '/ajax/mail.php',
-            type: 'GET',
+            url: './ajax/mail.php',
+            type: 'POST',
             cache: false,
             data: { 'name': name, 'email': email, 'idea': idea },
             dataType: 'html',
@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     $('form').trigger("reset");
                 }
                 $('#sendIdea').prop("hidden", false);
+                console.log("Спасибо за ваш отзыв!");
             }
         });
     });
