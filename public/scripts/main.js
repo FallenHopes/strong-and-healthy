@@ -42,9 +42,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         });
     });
-    // Подключение к серву с сокетом
     var socket = io.connect();
-    // Тут переключатель сайта по секциям. Так как переходить по ссылкам затратно и отнимает время, переключатель будет быстрее, думаю)
     document.getElementsByTagName('nav')[0].addEventListener('click', (e)=>{
         e.preventDefault();
         document.getElementsByClassName('selected')[0].removeAttribute("class");
@@ -121,8 +119,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         }
     });
-    // Здесь целый блок расчёта и выбора PDF. Я здесь реализовывал лишь доступ к кнопке расчёта и подсветку красными звёздочками недостающих
-    // полей. На тебе выгрузка пдф, ну или чего-нибудь
     document.getElementsByClassName('calculate')[0].addEventListener('input', () => {
         var possible = [];
         var go = false;
@@ -190,7 +186,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.getElementById('predupr').style.height = "15px";
         }
     });
-    // Эта кнопка для выезжающих контактов в футере
     document.getElementById('footer_btn').addEventListener('click', () => {
         var el = document.getElementById('footer_contacts_href');
         if (el.className === "footer_contacts_href close")
@@ -201,7 +196,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             el.className = "footer_contacts_href close";
         }
     });
-    // Эти два обработчика для выбора пола. Тобишь для того, чтобы можно было тыркнуть только 1 галку
     document.getElementById('male').addEventListener('change', (e) => {
         if (e.target.checked === true)
         {
@@ -214,7 +208,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.getElementById('male').checked = false;
         }
     });
-    // Следующие 4 обработчика для того, чтобы была возможность выбора только 1 чекбокса в категории (Я:)
     document.getElementById('sportsmen').addEventListener('change', (e) => {
         if (e.target.checked === true)
         {
