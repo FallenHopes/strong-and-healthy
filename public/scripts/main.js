@@ -253,7 +253,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         var blockofmess = document.getElementsByClassName('container_for_mess')[0];
         var nick = document.getElementsByClassName('forum')[0].getElementsByTagName('input')[0].value;
         var mess = document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value;
-        console.log(nick);
         if (nick === "")
         {
             alert("Пожалуйста, введите никнейм!");
@@ -276,6 +275,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
 function createForumMessage(nick, mess){
     var date = new Date();
     var monthStr;
+    var minutsStr;
     if (date.getMonth() + 1 <= 9)
     {
         monthStr = "0" + (date.getMonth() + 1);
@@ -283,11 +283,18 @@ function createForumMessage(nick, mess){
     else{
         monthStr = (date.getMonth() + 1);
     }
+    if (date.getMinutes() <= 9)
+    {
+        minutsStr = "0" + (date.getMinutes());
+    }
+    else{
+        minutsStr = (date.getMinutes());
+    }
     var block = document.createElement('div');
     block.className = "mess";
     block.innerHTML = `<div class="mess_wrap">
     <h2>${nick}</h2>
-    <span>${date.getDate()}.${monthStr}.${date.getFullYear()} , ${date.getHours()}:${date.getMinutes()}</span>
+    <span>${date.getDate()}.${monthStr}.${date.getFullYear()} , ${date.getHours()}:${minutsStr}</span>
     </div>
     <p>${mess}</p>`;
     return block;
