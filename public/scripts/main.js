@@ -262,6 +262,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
     socket.on('add', (data) => {
         blockofmess.appendChild(createForumMessage(data.nick, data.mess));
+        blockofmess.scrollTo(100, blockofmess.scrollHeight);
     });
     document.getElementsByClassName('forum')[0].addEventListener('keypress', (e) => {
         if (e.keyCode === 13)
