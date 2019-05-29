@@ -19,7 +19,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             $('#errorIdea').text("Введите сообщение не менее 10 символов")
             return false;
         }
-        console.log(idea);
         $('#errorIdea').text("");
         $.ajax({
             url: 'ajax/mail.php',
@@ -28,7 +27,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             data: { 'name': name, 'email': email, 'idea': idea },
             dataType: 'html',
             beforeSend: function(){
-                $('#sendIdea').prop("disable", true);
+                $('#sendIdea').prop("hidden", true);
             },
             success: function(data) {
                 if (!data)
@@ -38,7 +37,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 else{
                     $('form').trigger("reset");
                 }
-                $('#sendIdea').prop("disable", false);
+                $('#sendIdea').prop("hidden", false);
             }
         });
     });
