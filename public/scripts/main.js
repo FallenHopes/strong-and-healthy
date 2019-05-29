@@ -38,6 +38,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     $('form').trigger("reset");
                 }
                 $('#sendIdea').prop("hidden", false);
+                console.log("Спасибо за ваш отзыв!");
             }
         });
     });
