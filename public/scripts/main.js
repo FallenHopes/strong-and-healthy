@@ -263,6 +263,28 @@ document.addEventListener('DOMContentLoaded', ()=>{
     socket.on('add', (data) => {
         blockofmess.appendChild(createForumMessage(data.nick, data.mess));
     });
+    document.getElementsByClassName('forum')[0].addEventListener('keypress', (e) => {
+        if (e.keyCode === 13)
+        {
+            e.preventDefault();
+            var blockofmess = document.getElementsByClassName('container_for_mess')[0];
+            var nick = document.getElementsByClassName('forum')[0].getElementsByTagName('input')[0].value;
+            var mess = document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value;
+            if (nick === "")
+            {
+                alert("Пожалуйста, введите никнейм!");
+            }
+            else if(mess === "")
+            {
+                alert("Пожалуйста, введите сообщение!");
+            }
+            else{
+                socket.emit('send', {mess: mess, nick: nick});
+                document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value = "";
+                blockofmess.scrollTo(100, blockofmess.scrollHeight);
+            }
+        }
+    });
 });
 
 function createForumMessage(nick, mess){
