@@ -97,6 +97,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         else if(el.id === "forum")
         {
+            el.textContent = "ФОРУМ";
             calculate.setAttribute('hidden', 'true');
             news.setAttribute('hidden', 'true');
             lifehacks.setAttribute('hidden', 'true');
@@ -260,9 +261,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
             blockofmess.scrollTo(100, blockofmess.scrollHeight);
         }
     });
+    var counterOfMess = 0;
     socket.on('add', (data) => {
         blockofmess.appendChild(createForumMessage(data.nick, data.mess));
         blockofmess.scrollTo(100, blockofmess.scrollHeight);
+        if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true")
+        {
+            counterOfMess++;
+            document.getElementById('forum').textContent ="ФОРУМ(" + counterOfMess + ")";
+        }
+        else{
+            document.getElementById('forum').textContent = "ФОРУМ";
+            counterOfMess = 0;
+        }
     });
     document.getElementsByClassName('forum')[0].addEventListener('keypress', (e) => {
         if (e.keyCode === 13)
@@ -306,6 +317,10 @@ function createForumMessage(nick, mess){
     else{
         minutsStr = (date.getMinutes());
     }
+    mess = mess.replace(/>/g,"&#62;");
+    mess = mess.replace(/</g, "&#60;");
+    nick = nick.replace(/>/g,"&#62;");
+    nick = nick.replace(/</g, "&#60;");
     var block = document.createElement('div');
     block.className = "mess";
     block.innerHTML = `<div class="mess_wrap">
