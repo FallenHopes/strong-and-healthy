@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             type: 'POST',
             cache: false,
             data: { 'name': name, 'email': email, 'idea': idea },
-            dataType: 'text',
+            dataType: 'html',
             beforeSend: function(){
                 $('#sendIdea').prop("hidden", true);
             },
