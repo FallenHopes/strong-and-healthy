@@ -1,4 +1,67 @@
 document.addEventListener('DOMContentLoaded', ()=>{
+    var messColor;
+    switch(Math.floor(Math.random() * (20 - 1)) + 1){
+        case 1: 
+            messColor = "one";
+            break;
+        case 2:
+            messColor = "two";
+            break;
+        case 3: 
+            messColor = "three";
+            break;
+        case 4:
+            messColor = "four";
+            break;
+        case 5: 
+            messColor = "five";
+            break;
+        case 6:
+            messColor = "six";
+            break;
+        case 7: 
+            messColor = "seven";
+            break;
+        case 8:
+            messColor = "eight";
+            break;
+        case 9: 
+            messColor = "nine";
+            break;
+        case 10:
+            messColor = "ten";
+            break;
+        case 11: 
+            messColor = "eleven";
+            break;
+        case 12:
+            messColor = "twelve";
+            break;
+        case 13: 
+            messColor = "thirteen";
+            break;
+        case 14:
+            messColor = "fourteen";
+            break;
+        case 15: 
+            messColor = "fifteen";
+            break;
+        case 16:
+            messColor = "sixteen";
+            break;
+        case 17: 
+            messColor = "seventeen";
+            break;
+        case 18:
+            messColor = "eighteen";
+            break;
+        case 19: 
+            messColor = "nineteen";
+            break;
+        case 20:
+            messColor = "twenty";
+            break;
+    }
     $('#sendIdea').on('click', (e) => {
         e.preventDefault();
         var name = $('#personname').val().trim();
@@ -308,7 +371,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 10сек.";
             }
             else{
-                socket.emit('send', {mess: mess, nick: nick});
+                socket.emit('send', {mess: mess, nick: nick, colorClass: messColor});
                 document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value = "";
                 blockofmess.scrollTo(100, blockofmess.scrollHeight);
                 spam = new Date();
@@ -317,7 +380,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
     var counterOfMess = 0;
     socket.on('add', (data) => {
-        blockofmess.appendChild(createForumMessage(data.nick, data.mess));
+        blockofmess.appendChild(createForumMessage(data.nick, data.mess, data.colorClass));
         blockofmess.scrollTo(100, blockofmess.scrollHeight);
         if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true")
         {
@@ -354,7 +417,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
                     dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 10сек.";
                 }
                 else{
-                    socket.emit('send', {mess: mess, nick: nick});
+                    socket.emit('send', {mess: mess, nick: nick, colorClass: messColor});
                     document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value = "";
                     blockofmess.scrollTo(100, blockofmess.scrollHeight);
                     spam = new Date();
@@ -364,7 +427,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
     });
 });
 
-function createForumMessage(nick, mess){
+function createForumMessage(nick, mess, colorClass){
     var date = new Date();
     var monthStr;
     var minutsStr;
@@ -405,7 +468,7 @@ function createForumMessage(nick, mess){
     var block = document.createElement('div');
     block.className = "mess";
     block.innerHTML = `<div class="mess_wrap">
-    <h2>${nick}</h2>
+    <h2 class = "${colorClass}">${nick}</h2>
     <span>${daysStr}.${monthStr}.${date.getFullYear()} , ${hoursStr}:${minutsStr}</span>
     </div>
     <p>${mess}</p>`;

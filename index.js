@@ -20,7 +20,7 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
-        io.sockets.emit('add', {mess: data.mess, nick: data.nick});
+        io.sockets.emit('add', {mess: data.mess, nick: data.nick, colorClass: data.colorClass});
     });
 });
 

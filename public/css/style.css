@@ -254,7 +254,6 @@ footer img{
     padding: 10px;
     border: 1px solid black;
     border-radius: 15px;
-    background-color: #95df67;
     line-height: 1.5;
 }
 .mess_wrap{
@@ -500,4 +499,99 @@ nav span{
     .ideas{
         width: 80%;
     }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.one{ 
+    background-color: rgb(131, 128, 128); 
+    color: white; 
+} 
+.two{ 
+    background-color: rgb(90, 89, 180); 
+    color: white; 
+} 
+.three{ 
+    background-color: rgb(153, 17, 17); 
+    color: white; 
+} 
+.four{ 
+    background-color: rgb(150, 88, 88); 
+    color: white; 
+} 
+.five{ 
+    background-color: rgb(255, 244, 94); 
+    color: black; 
+} 
+.six{ 
+    background-color: rgba(255, 0, 0, 0.5); 
+    color: white; 
+} 
+.seven{ 
+    background-color: rgb(30, 209, 194); 
+    color: black; 
+} 
+.eight{ 
+    background-color: rgb(0, 255, 85); 
+    color: black; 
+} 
+.nine{ 
+    background-color: rgb(255, 166, 0); 
+    color: white; 
+} 
+.ten{ 
+    background-color: rgb(17, 0, 255); 
+    color: white; 
+} 
+.eleven{
+    background-color: rgb(255, 0, 234); 
+    color: white; 
+} 
+.twelve{ 
+    background-color: rgb(40, 133, 105); 
+    color: white; 
+} 
+.thirteen{ 
+    background-color: rgb(11, 39, 5); 
+    color: white; 
+} 
+.fifteen{
+    background-color: black; 
+    color: white; 
+} 
+.sixteen{ 
+    background-color: rgb(167, 192, 164); 
+    color: black; 
+} 
+.seventeen{ 
+    background-color: rgb(31, 156, 160); 
+    color: white; 
+} 
+.eighteen{ 
+    background-color: rgb(0, 174, 255); 
+    color: white; 
+} 
+.nineteen{ 
+    background-color: rgb(187, 104, 187); 
+    color: white; 
+} 
+.twenty{ 
+    background-color: rgb(44, 0, 0); 
+    color: white; 
 }
