@@ -270,12 +270,15 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.getElementById('sportsmen').checked = false;
         }
     });
+    var spam = new Date();
+    spam.setSeconds(spam.getSeconds() + 30);
     var blockofmess = document.getElementsByClassName('container_for_mess')[0];
     document.getElementById('send').addEventListener('click', (e) => {
         e.preventDefault();
         var blockofmess = document.getElementsByClassName('container_for_mess')[0];
         var nick = document.getElementsByClassName('forum')[0].getElementsByTagName('input')[0].value;
         var mess = document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value;
+        var current = new Date();
         if (nick === "")
         {
             alert("Пожалуйста, введите никнейм!");
@@ -285,9 +288,16 @@ document.addEventListener('DOMContentLoaded', ()=>{
             alert("Пожалуйста, введите сообщение!");
         }
         else{
-            socket.emit('send', {mess: mess, nick: nick});
-            document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value = "";
-            blockofmess.scrollTo(100, blockofmess.scrollHeight);
+            if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 10)
+            {
+                alert("Антиспам!");
+            }
+            else{
+                socket.emit('send', {mess: mess, nick: nick});
+                document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value = "";
+                blockofmess.scrollTo(100, blockofmess.scrollHeight);
+                spam = new Date();
+            }
         }
     });
     var counterOfMess = 0;
@@ -311,6 +321,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             var blockofmess = document.getElementsByClassName('container_for_mess')[0];
             var nick = document.getElementsByClassName('forum')[0].getElementsByTagName('input')[0].value;
             var mess = document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value;
+            var current = new Date();
             if (nick === "")
             {
                 alert("Пожалуйста, введите никнейм!");
@@ -320,9 +331,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 alert("Пожалуйста, введите сообщение!");
             }
             else{
-                socket.emit('send', {mess: mess, nick: nick});
-                document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value = "";
-                blockofmess.scrollTo(100, blockofmess.scrollHeight);
+                if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 10)
+                {
+                    console.log("Время после настройки " + spam);
+                    console.log("Время порога: " + current);
+                    console.log(Math.abs(current.getSeconds() - spam.getSeconds()));
+                    alert("Антиспам!");
+                }
+                else{
+                    socket.emit('send', {mess: mess, nick: nick});
+                    document.getElementsByClassName('forum')[0].getElementsByTagName('textarea')[0].value = "";
+                    blockofmess.scrollTo(100, blockofmess.scrollHeight);
+                    spam = new Date();
+                }
             }
         }
     });
