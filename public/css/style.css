@@ -199,13 +199,19 @@ footer img{
     width: 95%;
     outline: none;
     font-size: 20px;
-    padding: 5px;
+    padding: 10px;
     margin: 0 auto;
     margin-top: 15px;
     border: none;
+    transition: all .5s ease-in-out;
+}
+.forum input:focus, .forum textarea:focus{
+    background-color: black;
+    color: white;
 }
 .forum textarea{
     resize: none;
+    height: 100px;
 }
 .mess{
     width: 90%;
