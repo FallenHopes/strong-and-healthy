@@ -84,6 +84,12 @@ header h1{
     margin: 0 auto;
     color: #5a1430;
 }
+.new h1, .new span{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+    color: black;
+}
 .news_wrap, .lifehacks_wrap{
     overflow-y: scroll;
     padding-right: 20px;
@@ -164,6 +170,9 @@ footer img{
     margin-bottom: 20px;
     color: white;
 }
+.news h1{
+    color: black;
+}
 .news_read, .lifehack_read{
     display: block;
     width: 30%;
@@ -172,6 +181,18 @@ footer img{
     text-decoration: none;
     color: black;
     background-color: white;
+    border: 1px solid black;
+    transition: all .1s ease-in-out;
+}
+.news_read:hover{
+    background-color: #76c248;
+    border-color: wheat;
+    color: wheat;
+}
+.lifehack_read:hover{
+    background-color: #5a1430;
+    border-color: wheat;
+    color: wheat;
 }
 .danger::after{
     content: '*';
@@ -203,7 +224,7 @@ footer img{
     margin: 0 auto;
     margin-top: 15px;
     border: none;
-    transition: all .5s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 .forum input:focus, .forum textarea:focus{
     background-color: black;
@@ -212,6 +233,17 @@ footer img{
 .forum textarea{
     resize: none;
     height: 100px;
+}
+#dangersMessages
+{
+    height: .01px;
+    font-size: 15px;
+    font-weight: bold;
+    color: red;
+    width: 100%;
+    text-align: center;
+    overflow: hidden;
+    transition: all .2s ease-in-out;
 }
 .mess{
     width: 90%;
@@ -272,7 +304,7 @@ footer img{
     margin-bottom: 15px;
     padding: 10px;
     outline: none;
-    transition: all .5s ease-in-out;
+    transition: all .2s ease-in-out;
 }
 .ideas input{
     text-align: center;
@@ -456,7 +488,8 @@ nav span{
         height: 100%;
     }
     .footer_contacts_href a{
-        width: 80%;
+        width: 70%;
+        height: 40px;
     }
     .wrap{
         padding-left: 0;

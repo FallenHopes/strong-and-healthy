@@ -42,10 +42,21 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         });
     });
+    var dangerBlock = document.getElementById('dangersMessages');
     document.getElementById('nick').addEventListener('input', (e) => {
+        dangerBlock.style.height = ".01px";
+        dangerBlock.textContent = "";
         if (e.target.value.length >= 15)
         {
             e.target.value = e.target.value.splice(15, 1);
+        }
+    });
+    document.getElementById('message').addEventListener('input', (e) => {
+        dangerBlock.style.height = ".01px";
+        dangerBlock.textContent = "";
+        if (e.target.value.length >= 100)
+        {
+            e.target.value = e.target.value.splice(100, 1);
         }
     });
     var socket = io.connect();
@@ -91,7 +102,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.body.style.backgroundColor = "white";
             head.style.backgroundColor = "white";
             head.style.borderColor = "black";
-            document.getElementsByTagName('header')[0].style.color = "#5a1430";
+            document.getElementsByTagName('header')[0].style.color = "black";
             document.body.style.transition = "1s ease";
         }
         else if (el.id === "lifehacks")
@@ -128,6 +139,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
             head.style.backgroundColor = "#76c248";
             head.style.borderColor = "black";
+            document.getElementsByTagName('header')[0].style.color = "black";
             head.style.borderColor = "wheat";
             blockofmess.scrollTo(100, blockofmess.scrollHeight);
         }
@@ -281,16 +293,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
         var current = new Date();
         if (nick === "")
         {
-            alert("Пожалуйста, введите никнейм!");
+            dangerBlock.style.height = "20px";
+            dangerBlock.textContent = "Введите никнейм не более 15 символов";
         }
         else if(mess === "")
         {
-            alert("Пожалуйста, введите сообщение!");
+            dangerBlock.style.height = "20px";
+            dangerBlock.textContent = "Введите сообщение не более 100 символов";
         }
         else{
             if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 10)
             {
-                alert("Антиспам!");
+                dangerBlock.style.height = "20px";
+                dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 10сек.";
             }
             else{
                 socket.emit('send', {mess: mess, nick: nick});
@@ -324,19 +339,19 @@ document.addEventListener('DOMContentLoaded', ()=>{
             var current = new Date();
             if (nick === "")
             {
-                alert("Пожалуйста, введите никнейм!");
+                dangerBlock.style.height = "20px";
+                dangerBlock.textContent = "Введите никнейм не более 15 символов";
             }
             else if(mess === "")
             {
-                alert("Пожалуйста, введите сообщение!");
+                dangerBlock.style.height = "20px";
+                dangerBlock.textContent = "Введите сообщение не более 100 символов";
             }
             else{
                 if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 10)
                 {
-                    console.log("Время после настройки " + spam);
-                    console.log("Время порога: " + current);
-                    console.log(Math.abs(current.getSeconds() - spam.getSeconds()));
-                    alert("Антиспам!");
+                    dangerBlock.style.height = "20px";
+                    dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 10сек.";
                 }
                 else{
                     socket.emit('send', {mess: mess, nick: nick});

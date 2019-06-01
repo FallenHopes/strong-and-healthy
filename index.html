@@ -73,9 +73,9 @@
     <div hidden = "true" class="news">
         <h1>3 НОВЫХ НОВОСТИ:</h1>
         <div class="news_wrap">
-            <div style = "background-image: url(img/new1.jpg)" class="new">
-                <h1>Какая-то новость</h1>
-                <span>Какое-то краткое описание</span> <br>
+            <div style = "background-image: url(img/orig.gif)" class="new">
+                <h1>Первый запуск! Ура!</h1>
+                <span>Стартовая версия Strong And Healthy запущена</span> <br>
                 <a class = "news_read" href="#">Читать</a>
             </div>
             <div style = "background-image: url(img/new2.jpg)" class="new">
@@ -115,6 +115,7 @@
             <!-- Сюды кладутся сообщения из JSON объекта -->
         </div>
         <input type="text" name="nick" id="nick" maxlength="15" placeholder="Введите ваш никнейм:">
+        <div id="dangersMessages">Отправляйте сообщения не чаще, чем раз в 10 секунд!</div>
         <textarea name="message" id="message" cols="30" rows="10" maxlength="100" placeholder="Введите ваше сообщение:"></textarea>
         <button id = "send">Отправить</button>
     </div>
