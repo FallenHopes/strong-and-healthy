@@ -42,19 +42,22 @@ document.addEventListener('DOMContentLoaded', ()=>{
             }
         });
     });
+    document.getElementById('nick').addEventListener('input', (e) => {
+        e.target.value = e.target.value.splice(15, 1);
+    });
     var socket = io.connect();
     document.getElementsByTagName('nav')[0].addEventListener('click', (e)=>{
         e.preventDefault();
-        document.getElementsByClassName('selected')[0].removeAttribute("class");
         var el = e.target;
         var calculate = document.getElementsByClassName('calculate')[0];
         var news = document.getElementsByClassName('news')[0];
         var lifehacks = document.getElementsByClassName('lifehacks')[0];
         var forum = document.getElementsByClassName('forum')[0];
         var ideas = document.getElementsByClassName('ideas')[0];
-        el.className = "selected";
         if (el.id === "diets")
         {
+            document.getElementsByClassName('selected')[0].removeAttribute('class');
+            el.className = "selected";
             calculate.removeAttribute('hidden');
             news.setAttribute('hidden', 'true');
             lifehacks.setAttribute('hidden', 'true');
@@ -69,6 +72,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         else if(el.id === "news")
         {
+            document.getElementsByClassName('selected')[0].removeAttribute('class');
+            el.className = "selected";
             calculate.setAttribute('hidden', 'true');
             news.removeAttribute('hidden');
             lifehacks.setAttribute('hidden', 'true');
@@ -83,6 +88,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         else if (el.id === "lifehacks")
         {
+            document.getElementsByClassName('selected')[0].removeAttribute('class');
+            el.className = "selected";
             calculate.setAttribute('hidden', 'true');
             news.setAttribute('hidden', 'true');
             lifehacks.removeAttribute('hidden');
@@ -97,6 +104,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         else if(el.id === "forum")
         {
+            document.getElementsByClassName('selected')[0].removeAttribute('class');
+            el.className = "selected";
             el.textContent = "ФОРУМ";
             calculate.setAttribute('hidden', 'true');
             news.setAttribute('hidden', 'true');
@@ -108,6 +117,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         else if(el.id === "ideas")
         {
+            document.getElementsByClassName('selected')[0].removeAttribute('class');
+            el.className = "selected";
             calculate.setAttribute('hidden', 'true');
             news.setAttribute('hidden', 'true');
             lifehacks.setAttribute('hidden', 'true');

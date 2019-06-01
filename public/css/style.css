@@ -189,10 +189,12 @@ footer img{
     margin: 0 auto;
 }
 .forum input, .forum textarea{
-    width: 100%;
+    display: block;
+    width: 95%;
     outline: none;
     font-size: 20px;
     padding: 5px;
+    margin: 0 auto;
     margin-top: 15px;
     border: none;
 }
@@ -208,9 +210,8 @@ footer img{
     align-items: center;
     justify-content: space-between;
 }
-.mess_wrap p img{
-    width: 50%;
-    height: 100px;
+.mess p{
+    word-wrap: break-word;
 }
 #send{
     display: block;
@@ -283,6 +284,10 @@ footer img{
 }
 
 
+.fornickname::after{
+    content: 'Никнейм не должен превышать 15 символов';
+    color: red;
+}
 
 
 
@@ -318,7 +323,7 @@ nav span{
 @media (max-width: 1024px)
 {
     .wrap{
-        width: 80%;
+        width: 90%;
     }
     .calculate__wrap{
         width: 80%;
@@ -364,17 +369,46 @@ nav span{
     }
     nav{
         display: flex;
-        justify-content: space-between;
+        justify-content: space-around;
         font-size: 10px;
         margin-bottom: 20px;
     }
     nav span{
-        padding: 10px;
+        padding: 8px;
+        line-height: 2.5;
     }
     header{
         display: block;
     }
     header h1{
         text-align: center;
+    }
+    .news_wrap{
+        width: 90%;
+    }
+    .lifehacks_wrap{
+        width: 90%;
+    }
+    .new, .lifehack{
+        height: 300px;
+        padding-top: 30%;
+    }
+    #send{
+        width: 90%;
+    }
+    .mess_wrap{
+        display: inline;
+    }
+    .mess h2{
+        font-size: 20px;
+    }
+    .mess{
+        text-align: center;
+        border-bottom: 2px solid white;
+    }
+    .mess p{
+        display: block;
+        width: 100%;
+        height: 100%;
     }
 }
