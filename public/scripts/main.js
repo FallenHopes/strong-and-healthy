@@ -43,7 +43,10 @@ document.addEventListener('DOMContentLoaded', ()=>{
         });
     });
     document.getElementById('nick').addEventListener('input', (e) => {
-        e.target.value = e.target.value.splice(15, 1);
+        if (e.target.value.length >= 15)
+        {
+            e.target.value = e.target.value.splice(15, 1);
+        }
     });
     var socket = io.connect();
     document.getElementsByTagName('nav')[0].addEventListener('click', (e)=>{
