@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', ()=>{
         var lifehacks = document.getElementsByClassName('lifehacks')[0];
         var forum = document.getElementsByClassName('forum')[0];
         var ideas = document.getElementsByClassName('ideas')[0];
+        var head = document.getElementsByClassName('wrap')[0];
         if (el.id === "diets")
         {
             document.getElementsByClassName('selected')[0].removeAttribute('class');
@@ -67,6 +68,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "black";
             }
             document.body.style.backgroundColor = "wheat";
+            head.style.backgroundColor = "wheat";
+            head.style.borderColor = "black";
             document.getElementsByTagName('header')[0].style.color = "#5a1430";
             document.body.style.transition = "1s ease";
         }
@@ -83,6 +86,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "black";
             }
             document.body.style.backgroundColor = "white";
+            head.style.backgroundColor = "white";
+            head.style.borderColor = "black";
             document.getElementsByTagName('header')[0].style.color = "#5a1430";
             document.body.style.transition = "1s ease";
         }
@@ -99,6 +104,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
                 document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "wheat";
             }
             document.body.style.backgroundColor = "#5a1430";
+            head.style.backgroundColor = "#5a1430";
+            head.style.borderColor = "wheat";
             document.getElementsByTagName('header')[0].style.color = "wheat";
             document.body.style.transition = "1s ease";
         }
@@ -113,6 +120,12 @@ document.addEventListener('DOMContentLoaded', ()=>{
             forum.removeAttribute('hidden');
             ideas.setAttribute('hidden', 'true');
             document.body.style.backgroundColor = "#76c248";
+            for (var i = 0; i < document.getElementsByTagName('nav')[0].getElementsByTagName('span').length; i++){
+                document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "wheat";
+            }
+            head.style.backgroundColor = "#76c248";
+            head.style.borderColor = "black";
+            head.style.borderColor = "wheat";
             blockofmess.scrollTo(100, blockofmess.scrollHeight);
         }
         else if(el.id === "ideas")
@@ -125,6 +138,8 @@ document.addEventListener('DOMContentLoaded', ()=>{
             forum.setAttribute('hidden', 'true');
             ideas.removeAttribute('hidden');
             document.body.style.backgroundColor = "white";
+            head.style.backgroundColor = "white";
+            head.style.borderColor = "black";
             document.getElementsByTagName('header')[0].style.color = "black";
             for (var i = 0; i < document.getElementsByTagName('nav')[0].getElementsByTagName('span').length; i++){
                 document.getElementsByTagName('nav')[0].getElementsByTagName('span')[i].style.borderColor = "black";
@@ -314,6 +329,8 @@ function createForumMessage(nick, mess){
     var date = new Date();
     var monthStr;
     var minutsStr;
+    var hoursStr;
+    var daysStr;
     if (date.getMonth() + 1 <= 9)
     {
         monthStr = "0" + (date.getMonth() + 1);
@@ -323,10 +340,24 @@ function createForumMessage(nick, mess){
     }
     if (date.getMinutes() <= 9)
     {
-        minutsStr = "0" + (date.getMinutes());
+        minutsStr = "0" + date.getMinutes();
     }
     else{
-        minutsStr = (date.getMinutes());
+        minutsStr = date.getMinutes();
+    }
+    if (date.getDay() <= 9)
+    {
+        daysStr = "0" + date.getDay();
+    }
+    else{
+        daysStr = date.getDay();
+    }
+    if (date.getHours() <= 9)
+    {
+        hoursStr = "0" + date.getHours();
+    }
+    else{
+        hoursStr = date.getHours();
     }
     mess = mess.replace(/>/g,"&#62;");
     mess = mess.replace(/</g, "&#60;");
@@ -336,7 +367,7 @@ function createForumMessage(nick, mess){
     block.className = "mess";
     block.innerHTML = `<div class="mess_wrap">
     <h2>${nick}</h2>
-    <span>${date.getDate()}.${monthStr}.${date.getFullYear()} , ${date.getHours()}:${minutsStr}</span>
+    <span>${daysStr}.${monthStr}.${date.getFullYear()} , ${hoursStr}:${minutsStr}</span>
     </div>
     <p>${mess}</p>`;
     return block;

@@ -7,7 +7,13 @@ body{
 
 .wrap{
     width: 60%;
+    padding-left: 15px;
+    padding-right: 15px;
     margin: 0 auto;
+    border: 2px solid black;
+    border-top: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
 }
 
 header{
@@ -205,6 +211,14 @@ footer img{
     width: 90%;
     color: wheat;
 }
+.mess h2{
+    display: block;
+    padding: 10px;
+    border: 1px solid black;
+    border-radius: 15px;
+    background-color: #95df67;
+    line-height: 1.5;
+}
 .mess_wrap{
     display: flex;
     align-items: center;
@@ -246,7 +260,7 @@ footer img{
     margin: 0 auto;
 }
 .ideas input, .ideas textarea{
-    width: 100%;
+    width: 80%;
     border: 1px solid black;
     resize: none;
     margin-bottom: 15px;
@@ -281,12 +295,6 @@ footer img{
     border-color: #5a1430;
     background-color: #76c248;
     color: #5a1430;
-}
-
-
-.fornickname::after{
-    content: 'Никнейм не должен превышать 15 символов';
-    color: red;
 }
 
 
@@ -347,11 +355,40 @@ nav span{
     #calC{
         width: 60%;
     }
+    .footer{
+        display: block;
+        width: 70%;
+        margin: 0 auto;
+    }
+    .footer_info{
+        width: 100%;
+    }
+    .open{
+        height: 100px;
+    }
+    .footer_contacts_href a{
+        width: 30%;
+        height: 40px;
+    }
+    .footer img{
+        width: 50%;
+        height: 50%;
+    }
 }
 @media (max-width: 680px)
 {
     .wrap{
+        position: fixed;
         width: 100%;
+        border-bottom: 1px solid black;
+        background-color: wheat;
+    }
+    header h1{
+        font-size: 30px;
+    }
+    #spacer{
+        width: 100%;
+        height: 150px;
     }
     .calculate__wrap{
         display: block;
@@ -405,10 +442,23 @@ nav span{
     .mess{
         text-align: center;
         border-bottom: 2px solid white;
+        width: 100%;
     }
     .mess p{
         display: block;
         width: 100%;
         height: 100%;
+    }
+    .footer_contacts_href a{
+        width: 80%;
+    }
+    .wrap{
+        padding-left: 0;
+        padding-right: 0;
+        border-right: none;
+        border-left: none;
+    }
+    .ideas{
+        width: 80%;
     }
 }
