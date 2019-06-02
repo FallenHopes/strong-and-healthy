@@ -37,6 +37,7 @@ header h1{
 .calculate__wrap{
     display: flex;
     justify-content: space-around;
+    align-items: center;
     width: 50%;
     margin: 0 auto;
     margin-bottom: 50px;
@@ -45,8 +46,8 @@ header h1{
 .hum{
     width: 30%;
 }
-#drish{
-    margin-bottom: 20px;
+.diets{
+    text-align: right;
 }
 .calculate input[type=text]{
     float: left;
@@ -65,7 +66,7 @@ header h1{
     background-color: #76c248;
 }
 
-.calculate a{
+#calC{
     display: block;
     margin: 0 auto;
     width: 10%;
@@ -73,11 +74,10 @@ header h1{
     text-decoration: none;
     color: #5a1430;
     background-color: #76c248;
-    /* padding: 5px; */
-    /* border: 1px solid black; */
-    height: .1px;
+    height: .01px;
     overflow: hidden;
     transition: all .5s ease-in-out;
+    cursor: pointer;
 }
 .news, .lifehacks{
     width: 50%;
@@ -371,7 +371,7 @@ nav span{
         width: 90%;
     }
     .calculate__wrap{
-        width: 80%;
+        width: 50%;
     }
     .hum{
         width: 50%;
@@ -429,14 +429,21 @@ nav span{
     }
     .calculate__wrap{
         display: block;
-    }
-    .diets{
         width: 80%;
         margin: 0 auto;
+    }
+    #gender{
+        display: block;
+        margin-top: 20px;
+    }
+    .diets{
+        width: 100%;
+        margin: 0 auto;
+        margin-top: 30px;
         text-align: center;
     }
     .hum{
-        width: 80%;
+        width: 100%;
         margin: 0 auto;
         margin-bottom: 20px;
         text-align: center;

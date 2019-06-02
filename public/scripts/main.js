@@ -231,10 +231,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         var heigth = document.getElementById('heigth');
         var check1 = document.getElementById('male');
         var check2 = document.getElementById('female');
-        var sport = document.getElementById('sportsmen');
-        var middle = document.getElementById('middle');
-        var fade = document.getElementById('fade');
-        var drish = document.getElementById('drish');
         if (mass.value.match(/^([2-9]\d{1}){1}$|^([1-2]\d{2}){1}$/) === null){
             document.getElementsByClassName('massdiv')[0].classList.add('danger');
             possible[0] = 1;
@@ -259,14 +255,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
             document.getElementById('gender').classList.remove('danger');
             possible[2] = 0;
         }
-        if (sport.checked === false && middle.checked === false && fade.checked === false && drish.checked === false){
-            document.getElementById('i').classList.add('danger');
-            possible[3] = 1;
-        }
-        else{
-            document.getElementById('i').classList.remove('danger');
-            possible[3] = 0;
-        }
         for (var i = 0; i < possible.length; i++)
         {
             if (possible[i] === 0)
@@ -286,10 +274,34 @@ document.addEventListener('DOMContentLoaded', ()=>{
         }
         else{
             document.getElementById('calC').style.padding = "0";
-            document.getElementById('calC').style.height = ".1px";
+            document.getElementById('calC').style.height = ".01px";
             document.getElementById('calC').style.borderTop = "none";       
             document.getElementById('predupr').style.height = "15px";
         }
+    });
+    document.getElementById('calC').addEventListener('click', () => {
+        var mass = document.getElementById('mass').value;
+        mass = parseInt(mass, 10);
+        var height = document.getElementById('heigth').value;
+        var gender = Gender();
+        var index = IndexOfMass(mass, height, gender);
+        var plan;
+        switch(index)
+        {
+            case "norma":
+                plan = "Ваши пропорции в рамках нормы. Составлена диета для поддержания формы.";
+                break;
+            case "distrof":
+                plan = "Судя по всему, вам необходимо набрать вес. Соcтавлена диета для набора массы.";
+                break;
+            case "polnota":
+                plan = "У вас лёгкая полнота. Соcтавлена диета для похудения.";
+                break;
+            case "ojirenie":
+                plan = "Судя по данным, вы страдаете ожирением. Составлена диета для сброса веса.";
+                break;
+        }
+        alert(plan + Kuper(height, gender));
     });
     document.getElementById('footer_btn').addEventListener('click', () => {
         var el = document.getElementById('footer_contacts_href');
@@ -311,38 +323,6 @@ document.addEventListener('DOMContentLoaded', ()=>{
         if (e.target.checked === true)
         {
             document.getElementById('male').checked = false;
-        }
-    });
-    document.getElementById('sportsmen').addEventListener('change', (e) => {
-        if (e.target.checked === true)
-        {
-            document.getElementById('middle').checked = false;
-            document.getElementById('fade').checked = false;
-            document.getElementById('drish').checked = false;
-        }
-    });
-    document.getElementById('middle').addEventListener('change', (e) => {
-        if (e.target.checked === true)
-        {
-            document.getElementById('sportsmen').checked = false;
-            document.getElementById('fade').checked = false;
-            document.getElementById('drish').checked = false;
-        }
-    });
-    document.getElementById('fade').addEventListener('change', (e) => {
-        if (e.target.checked === true)
-        {
-            document.getElementById('middle').checked = false;
-            document.getElementById('sportsmen').checked = false;
-            document.getElementById('drish').checked = false;
-        }
-    });
-    document.getElementById('drish').addEventListener('change', (e) => {
-        if (e.target.checked === true)
-        {
-            document.getElementById('middle').checked = false;
-            document.getElementById('fade').checked = false;
-            document.getElementById('sportsmen').checked = false;
         }
     });
     var spam = new Date();
@@ -447,12 +427,12 @@ function createForumMessage(nick, mess, colorClass){
     else{
         minutsStr = date.getMinutes();
     }
-    if (date.getDay() <= 9)
+    if (date.getDate() <= 9)
     {
-        daysStr = "0" + date.getDay();
+        daysStr = "0" + date.getDate();
     }
     else{
-        daysStr = date.getDay();
+        daysStr = date.getDate();
     }
     if (date.getHours() <= 9)
     {
@@ -473,4 +453,68 @@ function createForumMessage(nick, mess, colorClass){
     </div>
     <p>${mess}</p>`;
     return block;
+}
+function IndexOfMass(mass, height, gender)
+{
+    height = height.split('');
+    height.splice(1, 0, '.');
+    height = height.join('');
+    height = parseFloat(height, 10);
+    var coef = mass / (height * height);
+    coef = coef.toFixed(1);
+    if (gender === "male")
+    {
+        if (coef < 19)
+        {
+            return "distrof";
+        }
+        else if (coef > 25 && coef < 30)
+        {
+            return "polnota";
+        }
+        else if (coef > 30){
+            return "ojirenie";
+        }
+        else{
+            return "norma";
+        }
+    }
+    else if(gender === "female")
+    {
+        if (coef < 19)
+        {
+            return "distrof";
+        }
+        else if (coef > 24.9 && coef < 30)
+        {
+            return "polnota";
+        }
+        else if (coef > 30){
+            return "ojirenie";
+        }
+        else{
+            return "norma";
+        }
+    }
+}
+function Gender(){
+    if (document.getElementById('male').checked === true)
+    {
+        return "male";
+    }
+    else if (document.getElementById('female').checked === true)
+    {
+        return "female";
+    }
+}
+function Kuper(height, gender){
+    height = parseInt(height, 10);
+    if (gender === "male")
+    {
+        return "Ваш идеальный вес: " + Math.round((0.713 * height) - 58.0);
+    }
+    else if (gender === "female")
+    {
+        return "Ваш идеальный вес: " + Math.round((0.624 * height) - 48.9);
+    }
 }
