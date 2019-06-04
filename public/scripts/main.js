@@ -325,9 +325,9 @@ document.addEventListener('DOMContentLoaded', () => {
             dangerBlock.textContent = "Введите сообщение не более 100 символов";
         }
         else {
-            if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 10) {
+            if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 3) {
                 dangerBlock.style.height = "20px";
-                dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 10сек.";
+                dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 3 сек.";
             }
             else {
                 socket.emit('send', { mess: mess, nick: nick, colorClass: messColor });
@@ -366,9 +366,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 dangerBlock.textContent = "Введите сообщение не более 100 символов";
             }
             else {
-                if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 10) {
+                if (spam.getHours() === current.getHours() && spam.getMinutes() === current.getMinutes() && Math.abs(current.getSeconds() - spam.getSeconds()) < 3) {
                     dangerBlock.style.height = "20px";
-                    dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 10сек.";
+                    dangerBlock.textContent = "Отправка сообщений разрешена с интервалом 3 сек.";
                 }
                 else {
                     socket.emit('send', { mess: mess, nick: nick, colorClass: messColor });
