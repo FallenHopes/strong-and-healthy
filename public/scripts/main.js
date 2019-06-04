@@ -339,7 +339,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     var counterOfMess = 0;
     socket.on('add', (data) => {
-        blockofmess.innerHTML += data.textForBlock;
+        blockofmess.insertAdjacentHTML('beforeend',data.textForBlock);
         blockofmess.scrollTo(100, blockofmess.scrollHeight);
         if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true") {
             counterOfMess++;
