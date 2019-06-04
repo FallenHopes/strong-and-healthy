@@ -52,12 +52,12 @@ function createForumMessage(nick, mess, colorClass){
     else{
         daysStr = date.getDate();
     }
-    if (date.getHours() <= 9)
+    if (date.getHours() + 3 <= 9)
     {
-        hoursStr = "0" + date.getHours();
+        hoursStr = "0" + (date.getHours() + 3);
     }
     else{
-        hoursStr = date.getHours();
+        hoursStr = (date.getHours() + 3);
     }
     mess = mess.replace(/>/g,"&#62;");
     mess = mess.replace(/</g, "&#60;");
