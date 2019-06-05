@@ -19,12 +19,15 @@ io.sockets.on('connection', (socket) => {
     connections.push(socket);
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
-        client.close();
     });
     socket.on('send', (data) => {
         client.connect(err => {
             const mm = client.db("mess").collection("messages");
-            mm.insertOne({nick: data.nick, mess: data.mess, color: data.colorClass});
+            mm.insertOne({nick: data.nick, mess: data.mess, color: data.colorClass}, (err, res => {
+                if (err) throw err;
+                console.log(res);
+            }));
+            client.close();
         });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
