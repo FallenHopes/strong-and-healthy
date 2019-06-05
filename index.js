@@ -4,7 +4,7 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 const port = process.env.PORT || 3000;
 server.listen(port);
-const MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient.prototype.db;
 const uri = "mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 client.connect(err => {
