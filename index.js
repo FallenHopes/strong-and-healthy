@@ -21,11 +21,6 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
-        client.connect(err => {
-            var collection = client.db("messages").collection("messages");
-            collection.insertOne({nick: data.nick, mess: data.mess, color: data.colorClass});
-            client.close();
-          });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
     });
