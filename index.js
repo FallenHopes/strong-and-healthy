@@ -2,8 +2,9 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
+var mongo = require('mongodb').MongoClient;
 const port = process.env.PORT || 3000;
-
+var url = 'mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority';
 server.listen(port);
 
 app.use(express.static('./public'));
@@ -20,6 +21,17 @@ io.sockets.on('connection', (socket) => {
     });
     socket.on('send', (data) => {
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
+        mongo.connect(url, function(err, db){
+            var allmess = db.collection('messages');
+            var message = {nickname : data.nick, message: data.mess, color: data.colorClass};
+            allmess.insertOne(message, function(err, result){
+                if (err){
+                    console.log(err);
+                    return;
+                }
+                db.close();
+            });
+        });
         io.sockets.emit('add', {textForBlock: elem});
     });
 });
