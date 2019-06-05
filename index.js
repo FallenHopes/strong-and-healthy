@@ -5,6 +5,7 @@ var io = require('socket.io').listen(server);
 var mongo = require('mongodb').MongoClient;
 const port = process.env.PORT || 3000;
 var url = 'mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority';
+var client = new mongo(url, {useNewUrlParser: true});
 server.listen(port);
 
 app.use(express.static('./public'));
@@ -20,23 +21,13 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
-        mongo.connect(url, (err, db) => {
-            if (err)
-            {
-                console.log(err);
-                return;
-            }
-            var allmess = db('messages').collection('messages');
+        client.connect(err => {
+            if (err) throw err;
+            var allmess = client.db("messages").collection("messages");
             var mess = {nickname: data.nick, message: data.mess, color: data.colorClass};
-            allmess.insertOne(mess, (err, result) => {
-                if(err)
-                {
-                    console.log(err);
-                    return;
-                }
-                console.log(result.ops);
-                db.close();
-            });
+            allmess.insertOne(mess, (err, res) => {
+                if(err) throw err;
+            client.close();
         });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
