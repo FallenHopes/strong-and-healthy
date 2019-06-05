@@ -22,11 +22,12 @@ io.sockets.on('connection', (socket) => {
     });
     socket.on('send', (data) => {
         client.connect(err => {
-            if (err) throw err;
+            if (err) throw err
             var allmess = client.db("messages").collection("messages");
             var mess = {nickname: data.nick, message: data.mess, color: data.colorClass};
             allmess.insertOne(mess, (err, res) => {
-                if(err) throw err;
+                if(err) throw err
+            });
             client.close();
         });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
