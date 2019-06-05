@@ -21,6 +21,11 @@ io.sockets.on('connection', (socket) => {
     });
     socket.on('send', (data) => {
         mongo.connect(url, (err, db) => {
+            if (err)
+            {
+                console.log(err);
+                return;
+            }
             var allmess = db('messages').collection('messages');
             var mess = {nickname: data.nick, message: data.mess, color: data.colorClass};
             allmess.insertOne(mess, (err, result) => {
