@@ -5,7 +5,7 @@ var io = require('socket.io').listen(server);
 const port = process.env.PORT || 3000;
 server.listen(port);
 const MongoClient = require('mongodb').MongoClient;
-const uri = "mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/messages?retryWrites=true&w=majority";
+const uri = "mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority";
 const client = new MongoClient(uri, { useNewUrlParser: true });
 
 app.use(express.static('./public'));
@@ -21,6 +21,11 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
+        client.connect(err => {
+            const mm = client.db("mess").collection("messages");
+            mm.insertOne({nick: data.nick, mess: data.mess, color: data.colorClass});
+            client.close();
+        });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
     });
