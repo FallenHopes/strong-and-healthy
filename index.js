@@ -3,8 +3,8 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 const MC = require('mongodb').MongoClient;
-const MongoClient = new MC("mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 const port = process.env.PORT || 3000;
+const MongoClient = new MC("mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 server.listen(port);
 
 app.use(express.static('./public'));
