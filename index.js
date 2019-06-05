@@ -4,8 +4,6 @@ var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 const port = process.env.PORT || 3000;
 server.listen(port);
-const config = require('config');
-const mongoose = require('mongoose');
 
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
@@ -20,10 +18,6 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
-        const db = mongoose.Connection;
-        mongoose.connect(config.MONGO_URL, {useNewUrlParser: true});
-        db.db("mess").collection("messages").insertOne({nick: data.nick, mess: data.mess, color: data.colorClass});
-        db.close();
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
     });
