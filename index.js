@@ -2,12 +2,10 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
-// const MongoClient = require('mongodb').MongoClient;
+const MC = require('mongodb').MongoClient;
+const MongoClient = new MC("mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 const port = process.env.PORT || 3000;
 server.listen(port);
-
-// const mongoURL = "mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority";
-// const dbname = "mess";
 
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
@@ -22,22 +20,19 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
-        // MongoClient.connect(mongoURL, {useNewUrlParser: true}, (error, client) => {
-        //     if (error)
-        //     {
-        //         throw error;
-        //     }
-        //     const database = client.db(dbname);
-        //     const collection = database.collection("messages");
-        //     var mess = {nick: data.nick, mess: data.mess, color: data.colorClass};
-        //     collection.insertOne(mess, (error, result) => {
-        //         if (error){
-        //             throw error;
-        //         }
-        //         console.log("Сохранён объект " + result.ops);
-        //     });
-        //     client.close(() => {alert("disconnect database")});
-        // });
+        MongoClient.connect((error, client) => {
+            const db = client.db("mess");
+            const collection = db.collection("messages");
+            let mess = {nick: data.nick, mess: data.mess, color: data.colorClass};
+            collection.insertOne(mess, (err, res) => {
+                if (err)
+                {
+                    return console.log(err);
+                }
+                console.log(res.ops);
+                client.close();
+            });
+        });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
     });
