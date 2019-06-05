@@ -20,6 +20,19 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
+        mongo.connect(url, (err, db) => {
+            var allmess = db('messages').collection('messages');
+            var mess = {nickname: data.nick, message: data.mess, color: data.colorClass};
+            allmess.insertOne(mess, (err, result) => {
+                if(err)
+                {
+                    console.log(err);
+                    return;
+                }
+                console.log(result.ops);
+                db.close();
+            });
+        });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
     });
