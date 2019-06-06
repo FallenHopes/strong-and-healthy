@@ -16,7 +16,7 @@ connections = [];
 io.sockets.on('connection', (socket) => {
     const allMess = async () => {
         var all = await Mess.returnMess();
-        console.log(all);
+        console.log("второй запрос " + all);
     }
     allMess();
     // for (var i = 0; i < allmess.messages.length; i++)

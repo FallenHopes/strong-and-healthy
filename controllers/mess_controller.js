@@ -7,9 +7,8 @@ function returnMess(){
     messages.findAll().then(data => {
         if (data)
         {
-            console.log(Promise.resolve(data));
-            console.log(data);
-            return Promise.resolve(data);
+            console.log("первый запрос");
+            return data;
         }
     })
 }
