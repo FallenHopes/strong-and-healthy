@@ -14,8 +14,10 @@ app.get('/', (req, res) => {
 connections = [];
 
 io.sockets.on('connection', (socket) => {
-    var allmess = Mess.returnMess();
-    console.log("Это из нод файла: " + allmess);
+    async GetMessages = () => {
+        var allmess = await Mess.returnMess();
+        console.log(allmess);
+    };
     // for (var i = 0; i < allmess.messages.length; i++)
     // {
     //     console.log(allmess.messages[i].dataValues.date);
