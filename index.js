@@ -15,13 +15,14 @@ connections = [];
 
 io.sockets.on('connection', (socket) => {
     var allmess = Mess.returnMess();
-    for (var i = 0; i < allmess.messages.length; i++)
-    {
-        console.log(allmess.messages[i].dataValues.date);
-        var allOfDate = JSON.parse(allmess.messages[i].dataValues.date);
-        console.log(allmess.messages[i].dataValues);
-        io.sockets.emit('add', {textForBlock: createForumMessage(allmess.messages[i].dataValues.nick, allmess.messages[i].dataValues.mess, allmess.messages[i].dataValues.color, allOfDate)});
-    }
+    console.log(allmess.messages)
+    // for (var i = 0; i < allmess.messages.length; i++)
+    // {
+    //     console.log(allmess.messages[i].dataValues.date);
+    //     var allOfDate = JSON.parse(allmess.messages[i].dataValues.date);
+    //     console.log(allmess.messages[i].dataValues);
+    //     io.sockets.emit('add', {textForBlock: createForumMessage(allmess.messages[i].dataValues.nick, allmess.messages[i].dataValues.mess, allmess.messages[i].dataValues.color, allOfDate)});
+    // }
     connections.push(socket);
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
