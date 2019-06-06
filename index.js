@@ -2,9 +2,7 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
-// const MC = require('mongodb').MongoClient;
 const port = process.env.PORT || 3000;
-// const MongoClient = new MC("mongodb+srv://dbAdmin:05v86a14d68@strongandhealthy-kohdh.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true});
 server.listen(port);
 
 app.use(express.static('./public'));
@@ -20,19 +18,6 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
-        // MongoClient.connect((error, client) => {
-        //     const db = client.db("mess");
-        //     const collection = db.collection("messages");
-        //     let mess = {nick: data.nick, mess: data.mess, color: data.colorClass};
-        //     collection.insertOne(mess, (err, res) => {
-        //         if (err)
-        //         {
-        //             return console.log(err);
-        //         }
-        //         console.log(res.ops);
-        //         client.close();
-        //     });
-        // });
         var elem = createForumMessage(data.nick, data.mess, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
     });
