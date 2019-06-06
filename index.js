@@ -18,7 +18,8 @@ io.sockets.on('connection', (socket) => {
     allmess.then(data => {
         if (data)
         {
-            console.log(data.typeOf());
+            var lol = JSON.parse(data);
+            console.log(lol);
             // for (var i = 0; i < data.messages.length; i++)
             // {
             //     var allOfDate = JSON.parse(data.messages[i].dataValues.date);
