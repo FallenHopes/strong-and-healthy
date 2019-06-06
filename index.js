@@ -15,8 +15,10 @@ connections = [];
 
 io.sockets.on('connection', (socket) => {
     var allmess = Mess.returnMess();
+    console.log(allmess);
     for (var i = 0; i < allmess.length; i++)
     {
+        console.log(allmess[i].date);
         var allOfDate = JSON.parse(allmess[i].date);
         console.log(allmess[i]);
         io.sockets.emit('add', {textForBlock: createForumMessage(allmess[i].nick, allmess[i].mess, allmess[i].color, allOfDate)});
