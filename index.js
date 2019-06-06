@@ -18,7 +18,9 @@ io.sockets.on('connection', (socket) => {
     allmess.then(data => {
         if (data)
         {
-            
+            console.log(data[0]);
+            console.log(data[1]);
+            console.log(data.messages[0]);
         }
     });
     // for (var i = 0; i < data.messages.length; i++)
