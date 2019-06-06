@@ -14,7 +14,12 @@ app.get('/', (req, res) => {
 connections = [];
 
 io.sockets.on('connection', (socket) => {
-    console.log(Mess.returnMess());
+    var allmess = Mess.returnMess();
+    for (var i = 0; i < allmess.length; i++)
+    {
+        var allOfDate = JSON.parse(allmess[i].date);
+        io.sockets.emit('add', {textForBlock: createForumMessage(allmess[i].nick, allmess[i].mess, allmess[i].color, allOfDate)});
+    }
     connections.push(socket);
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
