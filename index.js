@@ -18,7 +18,7 @@ io.sockets.on('connection', (socket) => {
     var allmess = Mess.returnMess();
     for (var i = 0; i < allmess.length; i++)
     {
-        io.sockets.emit('add', createForumMessage(allmess[i].nick, allmess[i].mess, allmess[i].color, allmess[i].date));
+        io.sockets.emit('add', {textForBlock: createForumMessage(allmess[i].nick, allmess[i].mess, allmess[i].color, allmess[i].date)});
     }
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
