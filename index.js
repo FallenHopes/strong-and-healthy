@@ -18,16 +18,14 @@ io.sockets.on('connection', (socket) => {
     allmess.then(data => {
         if (data)
         {
-            console.log(data);
+            for (var i = 0; i < data.messages.length; i++)
+            {
+                var allOfDate = JSON.parse(data.messages[i].dataValues.date);
+                console.log("Сообщение номер " + i + " = " + data.messages[i]);
+                io.sockets.emit('add', {textForBlock: createForumMessage(data.messages[i].dataValues.nick, data.messages[i].dataValues.mess, data.messages[i].dataValues.color, allOfDate)});
+            }
         }
     });
-    // for (var i = 0; i < allmess.messages.length; i++)
-    // {
-    //     console.log(allmess.messages[i].dataValues.date);
-    //     var allOfDate = JSON.parse(allmess.messages[i].dataValues.date);
-    //     console.log(allmess.messages[i].dataValues);
-    //     io.sockets.emit('add', {textForBlock: createForumMessage(allmess.messages[i].dataValues.nick, allmess.messages[i].dataValues.mess, allmess.messages[i].dataValues.color, allOfDate)});
-    // }
     connections.push(socket);
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
