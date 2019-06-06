@@ -15,7 +15,12 @@ connections = [];
 
 io.sockets.on('connection', (socket) => {
     var allmess = Mess.returnMess();
-    console.log(allmess);
+    allmess.then(data => {
+        if (data)
+        {
+            console.log(data);
+        }
+    });
     // for (var i = 0; i < allmess.messages.length; i++)
     // {
     //     console.log(allmess.messages[i].dataValues.date);
