@@ -18,13 +18,13 @@ io.sockets.on('connection', (socket) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
-        var elem = createForumMessage(data.nick, data.mess, data.colorClass);
+        var date = new Date();
+        var elem = createForumMessage(data.nick, data.mess, data.colorClass, date);
         io.sockets.emit('add', {textForBlock: elem});
     });
 });
 
-function createForumMessage(nick, mess, colorClass){
-    var date = new Date();
+function createForumMessage(nick, mess, colorClass, date){
     var monthStr;
     var minutsStr;
     var hoursStr;
