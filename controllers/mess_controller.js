@@ -4,11 +4,9 @@ function appendMess(nick, mess, color, date){
     messages.create({nick: nick, mess: mess, date: date, color: color});
 }
 function returnMess(){
-    return messages.findAll().then(allmess => {
-        return allmess;
-    });
+    return messages.findAll();
 }
 module.exports = {
-    appendMess,
-    returnMess
+    appendMess: appendMess,
+    returnMess: returnMess
 }
