@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 const port = process.env.PORT || 3000;
+const appendMess = require('./controllers/mess_controller');
 server.listen(port);
 
 app.use(express.static('./public'));
@@ -20,6 +21,7 @@ io.sockets.on('connection', (socket) => {
     socket.on('send', (data) => {
         var date = new Date();
         var elem = createForumMessage(data.nick, data.mess, data.colorClass, date);
+        appendMess.appendMess(data.nick, data.mess, data.date, data.color);
         io.sockets.emit('add', {textForBlock: elem});
     });
 });
