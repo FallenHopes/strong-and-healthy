@@ -5,7 +5,6 @@ function appendMess(nick, mess, color, date){
 }
 function returnMess(){
     messages.findAll().then(messages => {
-        console.log(messages);
         return messages;
     });
 }
