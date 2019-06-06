@@ -15,7 +15,11 @@ connections = [];
 
 io.sockets.on('connection', (socket) => {
     connections.push(socket);
-    console.log(Mess.returnMess());
+    var allmess = Mess.returnMess();
+    for (var i = 0; i < allmess.length; i++)
+    {
+        io.sockets.emit('add', createForumMessage(allmess[i].nick, allmess[i].mess, allmess[i].color, allmess[i].date));
+    }
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
     });
