@@ -14,8 +14,11 @@ app.get('/', (req, res) => {
 connections = [];
 
 io.sockets.on('connection', (socket) => {
-    var allmess = Mess.returnMess();
-    console.log(allmess);
+    const allMess = async () => {
+        var all = await Mess.returnMess();
+        console.log(all);
+    }
+    allMess();
     // for (var i = 0; i < allmess.messages.length; i++)
     // {
     //     console.log(allmess.messages[i].dataValues.date);
