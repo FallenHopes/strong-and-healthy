@@ -18,6 +18,8 @@ io.sockets.on('connection', (socket) => {
     allmess.then(data => {
         if (data)
         {
+            console.log(data);
+            console.log(data.messages);
             for (var i = 0; i < data.messages.length; i++)
             {
                 var allOfDate = JSON.parse(data.messages[i].dataValues.date);
