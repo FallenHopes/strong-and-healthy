@@ -14,7 +14,7 @@ app.get('/', (req, res) => {
 connections = [];
 
 io.sockets.on('connection', (socket) => {
-    var allmess = Mess.returnMess;
+    var allmess = Mess.returnMess();
     console.log(allmess);
     // for (var i = 0; i < allmess.messages.length; i++)
     // {
