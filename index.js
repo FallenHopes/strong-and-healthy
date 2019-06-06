@@ -3,7 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 const port = process.env.PORT || 3000;
-const appendMess = require('./controllers/mess_controller');
+const Mess = require('./controllers/mess_controller');
 server.listen(port);
 
 app.use(express.static('./public'));
@@ -15,13 +15,14 @@ connections = [];
 
 io.sockets.on('connection', (socket) => {
     connections.push(socket);
+    console.log(Mess.returnMess());
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
     });
     socket.on('send', (data) => {
         var date = new Date();
         var elem = createForumMessage(data.nick, data.mess, data.colorClass, date);
-        appendMess.appendMess(data.nick, data.mess, data.date, data.color);
+        Mess.appendMess(data.nick, data.mess, date, data.colorClass);
         io.sockets.emit('add', {textForBlock: elem});
     });
 });
