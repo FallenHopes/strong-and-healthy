@@ -21,7 +21,7 @@ io.sockets.on('connection', (socket) => {
     socket.on('send', (data) => {
         var date = new Date();
         var elem = createForumMessage(data.nick, data.mess, data.colorClass, date);
-        appendMess.appendMess(data.nick, data.mess, data.colorClass, date);
+        appendMess.appendMess(data.nick, data.mess, data.colorClass, date.toString());
         io.sockets.emit('add', {textForBlock: elem});
     });
 });
