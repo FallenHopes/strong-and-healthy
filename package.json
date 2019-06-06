@@ -23,6 +23,7 @@
     "express": "^4.17.1",
     "mongodb": "^3.2.7",
     "mongoose": "^5.5.12",
+    "mysql2": "^1.6.5",
     "sequelize": "^5.8.7",
     "sequelize-cli": "^5.4.0",
     "socket.io": "^2.2.0"
