@@ -16,9 +16,11 @@ connections = [];
 io.sockets.on('connection', (socket) => {
     const allMess = async () => {
         var all = await Mess.returnMess();
-        console.log("второй запрос " + all);
+        return all;
     }
-    allMess();
+    allMess().then(data => {
+        console.log("Второй запрос " + data);
+    });
     // for (var i = 0; i < allmess.messages.length; i++)
     // {
     //     console.log(allmess.messages[i].dataValues.date);
