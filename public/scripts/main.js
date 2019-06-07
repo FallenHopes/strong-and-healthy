@@ -1,4 +1,3 @@
-const mess = require('../../controllers/mess_controller');
 document.addEventListener('DOMContentLoaded', () => {
     var messColor;
     switch (Math.floor(Math.random() * (20 - 1)) + 1) {
@@ -380,17 +379,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    var massBlocks = [];
-    mess.returnMess().then(data => {
-        if (data)
-        {
-            for (var i = 0; i < data.length; i++)
-            {
-                massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
-                blockofmess.insertAdjacentHTML('beforeend', massBlocks[i]);
-            }
-        }
-    });
 });
 
 function IndexOfMass(mass, height, gender) {
@@ -445,18 +433,4 @@ function Kuper(height, gender) {
     else if (gender === "female") {
         return "Ваш идеальный вес: " + Math.round((0.624 * height) - 48.9);
     }
-}
-function createForumMessage(nick, mess, colorClass, date){
-    mess = mess.replace(/>/g,"&#62;");
-    mess = mess.replace(/</g, "&#60;");
-    nick = nick.replace(/>/g,"&#62;");
-    nick = nick.replace(/</g, "&#60;");
-    var block = `<div class = "mess">
-    <div class="mess_wrap">
-    <h2 class = "${colorClass}">${nick}</h2>
-    <span>${date}</span>
-    </div>
-    <p>${mess}</p>
-    </div>`;
-    return block;
 }
