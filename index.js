@@ -11,7 +11,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/loadMess', (res, req) => {
+app.get('/loadMess', (req, res) => {
     var allmess = Mess.returnMess();
     var massBlocks = [];
     allmess.then(data => {
@@ -21,7 +21,6 @@ app.get('/loadMess', (res, req) => {
             {
                 massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
             }
-            console.log(JSON.stringify(massBlocks));
             res.send(JSON.stringify(massBlocks));
         }
     });
