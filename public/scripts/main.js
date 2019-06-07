@@ -379,22 +379,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    socket.on('upload', (data) => {
-        for (var i = 0; i < data.allBlocks.length; i++)
-        {
-            console.log("Здесь я пихаю дату" + data);
-            blockofmess.insertAdjacentHTML('beforeend',data.allBlocks[i]);
-            blockofmess.scrollTo(100, blockofmess.scrollHeight);
-            if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true") {
-                counterOfMess++;
-                document.getElementById('forum').textContent = "ФОРУМ(" + counterOfMess + ")";
-            }
-            else {
-                document.getElementById('forum').textContent = "ФОРУМ";
-                counterOfMess = 0;
-            }
-        }
-    });
 });
 
 function IndexOfMass(mass, height, gender) {
