@@ -387,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
         success: data => {
             console.log('Ответ получен!' + data);
             var massOfMess = JSON.parse(data);
+            console.log(massOfMess);
             for (var i = 0; i < massOfMess.length; i++)
             {
                 blockofmess.insertAdjacentHTML('beforeend',data.textForBlock);
