@@ -17,7 +17,7 @@ app.get('/', (req, res) => {
             {
                 massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
             }
-            console.log("Тут мы закончили пихать всё в базу данных " + massBlocks);
+            console.log("Тут мы закончили пихать всё в базу данных " + massBlocks[1]);
             io.sockets.emit('upload', {allBlocks: massBlocks});
         }
     });
