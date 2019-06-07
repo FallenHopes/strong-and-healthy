@@ -390,14 +390,6 @@ document.addEventListener('DOMContentLoaded', () => {
             {
                 blockofmess.insertAdjacentHTML('beforeend',massOfMess[i]);
                 blockofmess.scrollTo(100, blockofmess.scrollHeight);
-                if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true") {
-                    counterOfMess++;
-                    document.getElementById('forum').textContent = "ФОРУМ(" + counterOfMess + ")";
-                }
-                else {
-                    document.getElementById('forum').textContent = "ФОРУМ";
-                    counterOfMess = 0;
-                }
             }
         }
     });
