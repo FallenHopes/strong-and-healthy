@@ -81,9 +81,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         $('#errorIdea').text("");
         $.ajax({
-            url: '/mail.php',
+            url: '/mail',
             data: { 'name': name, 'email': email, 'idea': idea },
-            dataType: 'html',
             beforeSend: function () {
                 $('#sendIdea').prop("hidden", true);
             },

@@ -2,6 +2,14 @@ var express = require('express');
 var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
+var mailer = require('nodemailer');
+var emailTransport = mailer.createTransport("SMTP", {
+    service: "Gmail",
+    auth: {
+        user: "strongandhealthyruss@gmail.com",
+        pass: "05v86a14d68"
+    }
+});
 const port = process.env.PORT || 3000;
 const Mess = require('./controllers/mess_controller');
 server.listen(port);
@@ -23,6 +31,25 @@ app.get('/loadMess', (req, res) => {
             }
             res.send(JSON.stringify(massBlocks));
         }
+    });
+});
+
+app.get('/mail', (req, res) => {
+    var mail = {
+        from: "Администрация Strong And Healthy",
+        to: req.query.email,
+        subject: "Ответ на ваш отзыв",
+        text: "Уважаемый " + req.query.name + "! Ваш отзыв был принят! Спасибо!",
+        html: "<b>Уважаемый " + req.query.name + "! Ваш отзыв был принят! Спасибо!</b>"
+    }
+    emailTransport.sendMail(mail, (error, response) => {
+        if (error){
+            console.log(error);
+        }
+        else{
+            console.log("Сообещние отправлено! " + response.message);
+        }
+        emailTransport.close();
     });
 });
 
