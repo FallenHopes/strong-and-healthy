@@ -89,6 +89,7 @@ header h1{
     width: 80%;
     margin: 0 auto;
     color: black;
+    background-color: white;
 }
 .news_wrap, .lifehacks_wrap{
     overflow-y: scroll;
@@ -102,12 +103,10 @@ header h1{
     background-color: #76c248;
     border-radius: 25px;
     width: 3px;
-    -moz-appearance: none !important;
 }
 .news_wrap::-webkit-scrollbar-thumb{
     background-image: linear-gradient(45deg, black, #76c248);
     border-radius: 25px;
-    -moz-appearance: none !important;
 }
 footer{
     text-align: center;
@@ -183,11 +182,55 @@ footer img{
     background-color: white;
     border: 1px solid black;
     transition: all .1s ease-in-out;
+    cursor: pointer;
 }
 .news_read:hover{
     background-color: #76c248;
     border-color: wheat;
     color: wheat;
+}
+.fullNew{
+    height: 500px;
+    overflow-y: scroll;
+}
+.fullNew_text{
+    word-wrap: break-word;
+    width: 95%;
+    color: black;
+}
+.fullNew_text h1, .fullNew_text h2, .fullNew_text h3, .fullNew_text h4, .fullNew_text h5{
+    text-align: center;
+} 
+.fullNew_text img{
+    display: block;
+    width: 80%;
+    margin: 0 auto;
+}
+.fullNew::-webkit-scrollbar{
+    margin-left: 40px;
+    background-color: #76c248;
+    border-radius: 25px;
+    width: 5px;
+}
+.fullNew::-webkit-scrollbar-thumb{
+    background-image: linear-gradient(45deg, black, #76c248);
+    border-radius: 25px;
+}
+#goBack{
+    display: none;
+    width: 35%;
+    margin: 0 auto;
+    margin-top: 30px;
+    text-align: center;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    cursor: pointer;
+    transition: all .2s ease-in-out;
+}
+#goBack:hover{
+    background-color: black;
+    color: white;
 }
 .lifehack_read:hover{
     background-color: #5a1430;
@@ -426,7 +469,7 @@ nav span{
     }
     #spacer{
         width: 100%;
-        height: 150px;
+        height: 105px;
     }
     .calculate__wrap{
         display: block;
@@ -474,6 +517,9 @@ nav span{
     .new, .lifehack{
         height: 300px;
         padding-top: 30%;
+    }
+    #goBack{
+        width: 80%;
     }
     #send{
         width: 90%;

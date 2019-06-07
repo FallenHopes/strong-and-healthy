@@ -101,6 +101,33 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+    $('.news_read').on('click', (e) => {
+        var blockNew = e.target.parentElement;
+        var fullNew = document.getElementsByClassName('fullNew');
+        var allNews = document.getElementsByClassName('new');
+        var header = document.getElementsByClassName('news')[0].getElementsByTagName('h1')[0];
+        for (var i = 0; i < allNews.length; i++)
+        {
+            if (allNews[i] === blockNew)
+            {
+                document.getElementsByClassName('news_wrap')[0].setAttribute('hidden', 'true');
+                header.textContent = blockNew.getElementsByTagName('h1')[0].textContent;
+                fullNew[i].removeAttribute('hidden');
+                fullNew[i].scrollTop = 0;
+                document.getElementById('goBack').style.display = "block";
+            }
+        }
+    });
+    $('#goBack').on('click', e => {
+        var fullNew = document.getElementsByClassName('fullNew');
+        for (var i = 0; i < fullNew.length; i++)
+        {
+            fullNew[i].setAttribute('hidden', 'true');
+        }
+        document.getElementsByClassName('news_wrap')[0].removeAttribute('hidden');
+        document.getElementsByClassName('news')[0].getElementsByTagName('h1')[0].textContent = "НОВОСТНАЯ ЛЕНТА";
+        e.target.style.display = "none";
+    });
     var dangerBlock = document.getElementById('dangersMessages');
     document.getElementById('nick').addEventListener('input', (e) => {
         dangerBlock.style.height = ".01px";
