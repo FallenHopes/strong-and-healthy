@@ -20,8 +20,8 @@ io.sockets.on('connection', (socket) => {
         {
             for (var i = 0; i < data.length; i++)
             {
-                var MyDate = Date.parse(data[i].dataValues.date);
-                console.log(MyDate);
+                var MyDate = new Date();
+                MyDate.setDate(Date.parse(data[i].dataValues.date));
                 io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, MyDate)});
             }
         }
