@@ -18,10 +18,12 @@ io.sockets.on('connection', (socket) => {
     allmess.then(data => {
         if (data)
         {
+            var massBlocks = [];
             for (var i = 0; i < data.length; i++)
             {
-                io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date)});
+                massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
             }
+            io.sockets.emit('loadMess', {massBlocks: massBlocks});
         }
     });
     connections.push(socket);
