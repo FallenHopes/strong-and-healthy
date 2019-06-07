@@ -21,6 +21,7 @@ app.get('/loadMess', (res, req) => {
             {
                 massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
             }
+            console.log(JSON.stringify(massBlocks));
             res.send(JSON.stringify(massBlocks));
         }
     });
