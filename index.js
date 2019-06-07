@@ -14,19 +14,16 @@ app.get('/', (req, res) => {
 connections = [];
 
 io.sockets.on('connection', (socket) => {
-    if (connections.indexOf(socket) === connections.length - 1)
-    {
-        var allmess = Mess.returnMess();
-        allmess.then(data => {
-            if (data)
+    var allmess = Mess.returnMess();
+    allmess.then(data => {
+        if (data)
+        {
+            for (var i = 0; i < data.length; i++)
             {
-                for (var i = 0; i < data.length; i++)
-                {
-                    io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date)});
-                }
+                io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date)});
             }
-        });
-    }
+        }
+    });
     connections.push(socket);
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
