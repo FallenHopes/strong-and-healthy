@@ -21,7 +21,6 @@ io.sockets.on('connection', (socket) => {
             for (var i = 0; i < data.length; i++)
             {
                 console.log(data[i]);
-                var dateFromObject = JSON.parse(data[i].dataValues.date);
                 io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, dateFromObject)});
             }
         }
