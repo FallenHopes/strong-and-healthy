@@ -20,7 +20,9 @@ io.sockets.on('connection', (socket) => {
         {
             for (var i = 0; i < data.length; i++)
             {
-                io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date)});
+                var MyDate = Date.parse(data[i].dataValues.date);
+                console.log(MyDate);
+                io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, MyDate)});
             }
         }
     });
