@@ -232,7 +232,7 @@ footer img{
 }
 .forum textarea{
     resize: none;
-    height: 100px;
+    height: 80px;
 }
 #dangersMessages
 {
@@ -252,6 +252,7 @@ footer img{
 .mess h2{
     display: block;
     padding: 10px;
+    font-size: 15px;
     border: 1px solid black;
     border-radius: 15px;
     line-height: 1.5;
@@ -276,7 +277,7 @@ footer img{
     outline: none;
 }
 .container_for_mess{
-    height: 400px;
+    height: 600px;
     overflow-y: scroll;
 }
 .container_for_mess::-webkit-scrollbar{
