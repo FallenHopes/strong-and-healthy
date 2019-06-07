@@ -381,9 +381,6 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     $.ajax({
         url: '/loadMess',
-        beforeSend: () => {
-            console.log('Запрос отправлен!');
-        },
         success: data => {
             var massOfMess = JSON.parse(data);
             for (var i = 0; i < massOfMess.length; i++)
