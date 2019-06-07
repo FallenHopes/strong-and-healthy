@@ -19,8 +19,8 @@ app.get('/', (req, res) => {
             }
         }
     });
-    io.sockets.emit('upload', {allBlocks: massBlocks});
     res.sendFile(__dirname + '/index.html');
+    io.sockets.emit('upload', {allBlocks: massBlocks});
 });
 
 connections = [];
