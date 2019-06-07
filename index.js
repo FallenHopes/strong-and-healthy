@@ -17,11 +17,11 @@ app.get('/', (req, res) => {
             {
                 massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
             }
-            console.log("Тут мы закончили пихать всё в базу данных " + massBlocks[1]);
+            console.log("Здесь я обратился к базе " + massBlocks);
             io.sockets.emit('upload', {allBlocks: massBlocks});
         }
     });
-    console.log("Тут типо отправка файла");
+    console.log("Здесь рендерю файлик");
     res.sendFile(__dirname + '/index.html');
 });
 
