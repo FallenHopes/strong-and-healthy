@@ -18,16 +18,14 @@ io.sockets.on('connection', (socket) => {
     allmess.then(data => {
         if (data)
         {
-            console.log(data[0]);
-            console.log(data[1]);
+            for (var i = 0; i < data.length; i++)
+            {
+                console.log(data[i]);
+                var dateFromObject = JSON.parse(data[i].dataValues.date);
+                io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, dateFromObject)});
+            }
         }
     });
-    // for (var i = 0; i < data.messages.length; i++)
-    // {
-    //     var allOfDate = JSON.parse(data.messages[i].dataValues.date);
-    //     console.log("Сообщение номер " + i + " = " + data.messages[i]);
-    //     io.sockets.emit('add', {textForBlock: createForumMessage(data.messages[i].dataValues.nick, data.messages[i].dataValues.mess, data.messages[i].dataValues.color, allOfDate)});
-    // }
     connections.push(socket);
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
