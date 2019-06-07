@@ -385,12 +385,10 @@ document.addEventListener('DOMContentLoaded', () => {
             console.log('Запрос отправлен!');
         },
         success: data => {
-            console.log('Ответ получен!' + data);
             var massOfMess = JSON.parse(data);
-            console.log(massOfMess);
             for (var i = 0; i < massOfMess.length; i++)
             {
-                blockofmess.insertAdjacentHTML('beforeend',data.textForBlock);
+                blockofmess.insertAdjacentHTML('beforeend',massOfMess[i]);
                 blockofmess.scrollTo(100, blockofmess.scrollHeight);
                 if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true") {
                     counterOfMess++;
