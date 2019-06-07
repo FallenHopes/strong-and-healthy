@@ -18,9 +18,8 @@ io.sockets.on('connection', (socket) => {
     allmess.then(data => {
         if (data)
         {
-            console.log("Это дата 0 " + data[0]);
-            console.log("Это дата 1" + data[1]);
-            console.log("Это месс 1" + data[0].messages[0]);
+            console.log(data[0]);
+            console.log(data[1]);
         }
     });
     // for (var i = 0; i < data.messages.length; i++)
