@@ -16,11 +16,11 @@ app.get('/', (req, res) => {
             for (var i = 0; i < data.length; i++)
             {
                 massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
+                res.sendFile(__dirname + '/index.html');
+                io.sockets.emit('upload', {allBlocks: massBlocks});
             }
         }
     });
-    res.sendFile(__dirname + '/index.html');
-    io.sockets.emit('upload', {allBlocks: massBlocks});
 });
 
 connections = [];
