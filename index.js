@@ -8,6 +8,10 @@ server.listen(port);
 
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
+    res.sendFile(__dirname + '/index.html');
+});
+
+app.get('/loadMess', (res, req) => {
     var allmess = Mess.returnMess();
     var massBlocks = [];
     allmess.then(data => {
@@ -17,9 +21,9 @@ app.get('/', (req, res) => {
             {
                 massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
             }
+            res.send(JSON.stringify(massBlocks));
         }
     });
-    res.sendFile(__dirname + '/index.html');
 });
 
 connections = [];

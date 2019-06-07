@@ -379,6 +379,29 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+    $.ajax({
+        url: '/loadMess',
+        beforeSend: () => {
+            console.log('Запрос отправлен!');
+        },
+        success: data => {
+            console.log('Ответ получен!' + data);
+            var massOfMess = JSON.parse(data);
+            for (var i = 0; i < massOfMess.length; i++)
+            {
+                blockofmess.insertAdjacentHTML('beforeend',data.textForBlock);
+                blockofmess.scrollTo(100, blockofmess.scrollHeight);
+                if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true") {
+                    counterOfMess++;
+                    document.getElementById('forum').textContent = "ФОРУМ(" + counterOfMess + ")";
+                }
+                else {
+                    document.getElementById('forum').textContent = "ФОРУМ";
+                    counterOfMess = 0;
+                }
+            }
+        }
+    });
 });
 
 function IndexOfMass(mass, height, gender) {
