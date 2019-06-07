@@ -8,24 +8,24 @@ server.listen(port);
 
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
+    var allmess = Mess.returnMess();
+    var massBlocks = [];
+    allmess.then(data => {
+        if (data)
+        {
+            for (var i = 0; i < data.length; i++)
+            {
+                massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
+                document.getElementsByClassName('container_for_mess')[0].insertAdjacentHTML('beforeend', massBlocks[i]);
+            }
+        }
+    });
     res.sendFile(__dirname + '/index.html');
 });
 
 connections = [];
 
 io.sockets.on('connection', (socket) => {
-    var allmess = Mess.returnMess();
-    allmess.then(data => {
-        if (data)
-        {
-            var massBlocks = [];
-            for (var i = 0; i < data.length; i++)
-            {
-                massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
-            }
-            io.sockets.emit('loadMess', {massBlocks: massBlocks});
-        }
-    });
     connections.push(socket);
     socket.on('disconnect', (data) => {
         connections.splice(connections.indexOf(socket), 1);
