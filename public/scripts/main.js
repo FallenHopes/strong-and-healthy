@@ -117,6 +117,21 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     var socket = io.connect();
+    socket.on('upload', data => {
+        for (var i = 0; i < data.allBlocks.length; i++)
+        {
+            blockofmess.insertAdjacentHTML('beforeend',data.allBlocks[i]);
+            blockofmess.scrollTo(100, blockofmess.scrollHeight);
+            if (document.getElementsByClassName('forum')[0].getAttribute('hidden') === "true") {
+                counterOfMess++;
+                document.getElementById('forum').textContent = "ФОРУМ(" + counterOfMess + ")";
+            }
+            else {
+                document.getElementById('forum').textContent = "ФОРУМ";
+                counterOfMess = 0;
+            }
+        }
+    })
     document.getElementsByTagName('nav')[0].addEventListener('click', (e) => {
         e.preventDefault();
         var el = e.target;

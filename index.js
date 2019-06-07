@@ -16,10 +16,10 @@ app.get('/', (req, res) => {
             for (var i = 0; i < data.length; i++)
             {
                 massBlocks[i] = createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date);
-                document.getElementsByClassName('container_for_mess')[0].insertAdjacentHTML('beforeend', massBlocks[i]);
             }
         }
     });
+    io.sockets.emit('upload', {allBlocks: massBlocks});
     res.sendFile(__dirname + '/index.html');
 });
 
