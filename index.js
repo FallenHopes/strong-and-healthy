@@ -20,9 +20,7 @@ io.sockets.on('connection', (socket) => {
         {
             for (var i = 0; i < data.length; i++)
             {
-                var MyDate = new Date();
-                MyDate.setDate(Date.parse(data[i].dataValues.date));
-                io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, MyDate)});
+                io.sockets.emit('add', {textForBlock: createForumMessage(data[i].dataValues.nick, data[i].dataValues.mess, data[i].dataValues.color, data[i].dataValues.date)});
             }
         }
     });
@@ -32,17 +30,32 @@ io.sockets.on('connection', (socket) => {
     });
     socket.on('send', (data) => {
         var date = new Date();
-        var elem = createForumMessage(data.nick, data.mess, data.colorClass, date);
+        var elem = createForumMessage(data.nick, data.mess, data.colorClass, generateDateString(date));
         Mess.appendMess(data.nick, data.mess, data.colorClass, date.toString());
         io.sockets.emit('add', {textForBlock: elem});
     });
 });
 
 function createForumMessage(nick, mess, colorClass, date){
+    mess = mess.replace(/>/g,"&#62;");
+    mess = mess.replace(/</g, "&#60;");
+    nick = nick.replace(/>/g,"&#62;");
+    nick = nick.replace(/</g, "&#60;");
+    var block = `<div class = "mess">
+    <div class="mess_wrap">
+    <h2 class = "${colorClass}">${nick}</h2>
+    <span>${date}</span>
+    </div>
+    <p>${mess}</p>
+    </div>`;
+    return block;
+}
+function generateDateString(date){
     var monthStr;
     var minutsStr;
     var hoursStr;
     var daysStr;
+    var fulldate;
     if (date.getMonth() + 1 <= 9)
     {
         monthStr = "0" + (date.getMonth() + 1);
@@ -71,17 +84,7 @@ function createForumMessage(nick, mess, colorClass, date){
     else{
         hoursStr = (date.getHours() + 3);
     }
-    mess = mess.replace(/>/g,"&#62;");
-    mess = mess.replace(/</g, "&#60;");
-    nick = nick.replace(/>/g,"&#62;");
-    nick = nick.replace(/</g, "&#60;");
-    var block = `<div class = "mess">
-    <div class="mess_wrap">
-    <h2 class = "${colorClass}">${nick}</h2>
-    <span>${daysStr}.${monthStr}.${date.getFullYear()} , ${hoursStr}:${minutsStr}</span>
-    </div>
-    <p>${mess}</p>
-    </div>`;
-    return block;
+    fulldate = daysStr + "." + monthStr + "." + date.getFullYear() + " , " + hoursStr + ":" + minutsStr;
+    return fulldate;
 }
 
