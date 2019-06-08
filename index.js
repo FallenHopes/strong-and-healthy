@@ -132,7 +132,11 @@ function generateDateString(date){
         hoursStr = "0" + (date.getHours() + 3);
     }
     else{
-        if ((date.getHours() + 3) === 25)
+        if ((date.getHours() + 3) === 24)
+        {
+            hoursStr = "00";
+        }
+        else if ((date.getHours() + 3) === 25)
         {
             hoursStr = "01";
         }
