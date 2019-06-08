@@ -159,7 +159,7 @@ function htmlForResponse(name)
     <h1 style = "display: block; text-align: center">Уважаемый ${name}!</h1>
     <h2 style = "display: block; text-align: center">Дата обращения: ${generateDateString(date)}</h2>
     <h1 style = "display: block; text-align: center">Спасибо за ваш отзыв!</h1>
-    <span style = "font-size: 10px; font-weight: bold; display: block; text-align: right; margin-top: 110px">Администрация Strong And Healthy</span>
+    <span style = "font-size: 10px; font-weight: bold; display: block; text-align: right; margin-top: 100px">Администрация Strong And Healthy</span>
     </div>`
 }
 
