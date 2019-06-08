@@ -135,18 +135,46 @@ function generateDateString(date){
         if ((date.getHours() + 3) === 24)
         {
             hoursStr = "00";
+            if ((date.getDate() + 1) <= 9)
+            {
+                daysStr = "0" + (date.getDate() + 1);
+            }
+            else{
+                daysStr = (date.getDate() + 1);
+            }
         }
         else if ((date.getHours() + 3) === 25)
         {
             hoursStr = "01";
+            if ((date.getDate() + 1) <= 9)
+            {
+                daysStr = "0" + (date.getDate() + 1);
+            }
+            else{
+                daysStr = (date.getDate() + 1);
+            }
         }
         else if((date.getHours() + 3) === 26)
         {
             hoursStr = "02";
+            if ((date.getDate() + 1) <= 9)
+            {
+                daysStr = "0" + (date.getDate() + 1);
+            }
+            else{
+                daysStr = (date.getDate() + 1);
+            }
         }
         else if((date.getHours() + 3) === 27)
         {
             hoursStr = "03";
+            if ((date.getDate() + 1) <= 9)
+            {
+                daysStr = "0" + (date.getDate() + 1);
+            }
+            else{
+                daysStr = (date.getDate() + 1);
+            }
         }
         else{
             hoursStr = (date.getHours() + 3);
