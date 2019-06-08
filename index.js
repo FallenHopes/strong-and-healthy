@@ -154,12 +154,12 @@ function generateDateString(date){
 function htmlForResponse(name)
 {
     var date = new Date();
-    return `<div style = "font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; position: relative; width: 550px; height: 500px; background-color: #76c248; border-radius: 15px; border: 1px solid black">
-    <img style = "position: absolute; display: block; width: 200px; height: 200px; top: 10%; left: 32%" src="http://strong-and-healthy.herokuapp.com/img/S&HfooterLogo.png">
-    <h1 style = "display: block; position: absolute; width: 100%; top: 50%; text-align: center">Уважаемый ${name}!</h1>
-    <h2 style = "display: block; position: absolute; width: 100%; top: 63%; text-align: center">Дата обращения: ${generateDateString(date)}</h2>
-    <h1 style = "display: block; position: absolute; width: 100%; top: 74%; text-align: center">Спасибо за ваш отзыв!</h1>
-    <span style = "font-size: 10px; font-weight: bold; display: block; position: absolute; top: 96%; left: 68%;">Администрация Strong And Healthy</span>
+    return `<div style = "font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif; width: 550px; height: 500px; padding: 10px; padding-top: 50px; background-color: #76c248; border-radius: 15px; border: 1px solid black">
+    <img style = "display: block; width: 200px; height: 200px; margin: 0 auto; margin-bottom: 30px" src="http://strong-and-healthy.herokuapp.com/img/S&HfooterLogo.png">
+    <h1 style = "display: block; text-align: center">Уважаемый ${name}!</h1>
+    <h2 style = "display: block; text-align: center">Дата обращения: ${generateDateString(date)}</h2>
+    <h1 style = "display: block; text-align: center">Спасибо за ваш отзыв!</h1>
+    <span style = "font-size: 10px; font-weight: bold; display: block; text-align: right; margin-top: 110px">Администрация Strong And Healthy</span>
     </div>`
 }
 
