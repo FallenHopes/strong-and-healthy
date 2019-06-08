@@ -47,10 +47,11 @@ app.get('/mail', (req, res) => {
             console.log(error);
         }
         else{
-            console.log("Сообещние отправлено! " + response.message);
+            console.log("Сообещние отправлено!");
         }
         emailTransport.close();
     });
+    res.send("Отзыв отправлен! Информация о доставке отправлена на ваш электронный ящик!");
 });
 
 connections = [];

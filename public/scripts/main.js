@@ -84,7 +84,7 @@ document.addEventListener('DOMContentLoaded', () => {
             url: '/mail',
             data: { 'name': name, 'email': email, 'idea': idea },
             beforeSend: function () {
-                $('#sendIdea').prop("hidden", true);
+                $('#sendIdea').prop("disable", true);
             },
             success: function (data) {
                 if (!data) {
@@ -92,9 +92,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 else {
                     $('form').trigger("reset");
-                    alert("Спасибо за ваш отзыв!");
+                    alert(data);
                 }
-                $('#sendIdea').prop("hidden", false);
+                $('#sendIdea').prop("disable", false);
             }
         });
     });
