@@ -42,12 +42,29 @@ app.get('/mail', (req, res) => {
         text: "Уважаемый " + req.query.name + "! Ваш отзыв был принят! Спасибо!",
         html: "<b>Уважаемый " + req.query.name + "! Ваш отзыв был принят! Спасибо!</b>"
     }
+    var mailToMe = {
+        from: "Администрация Strong And Healthy",
+        to: "strongandhealthyruss@gmail.com",
+        subject: "Отзыв от " + req.query.name,
+        text: "Отзыв: " + req.query.idea + "\n --------Конец отзыва------- \n Отвечать на ящик: " + req.query.email,
+        html: "<b>Отзыв:</b> " + req.query.idea + "\n --------<b>Конец отзыва</b>------- \n Отвечать на ящик: <b>" + req.query.email + "</b>"
+    }
     emailTransport.sendMail(mail, (error, response) => {
         if (error){
             console.log(error);
         }
         else{
             console.log("Сообещние отправлено!");
+        }
+        emailTransport.close();
+    });
+    emailTransport.sendMail(mailToMe, (error, response) => {
+        if (error)
+        {
+            console.log(error);
+        }
+        else{
+            console.log("Улетело на админ-ящик");
         }
         emailTransport.close();
     });

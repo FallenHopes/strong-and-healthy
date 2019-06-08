@@ -67,12 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
         var name = $('#personname').val().trim();
         var email = $('#personemail').val().trim();
         var idea = $('#idea').val();
-        if (name === "") {
-            $('#errorIdea').text("Введите ваше имя");
+        if (name.match(/^[А-я]*$/) === null) {
+            $('#errorIdea').text("Введите корректное имя");
             return false;
         }
-        else if (email === "") {
-            $('#errorIdea').text("Введите ваш email");
+        else if (email.match(/^[a-zA-Z0-9_.-]+@[a-z]{2,10}\.[a-z]{2,4}$/) === null) {
+            $('#errorIdea').text("Введите корректный email");
             return false;
         }
         else if (idea.length < 10) {
