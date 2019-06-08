@@ -38,7 +38,7 @@ app.get('/mail', (req, res) => {
     var mail = {
         from: "Администрация Strong And Healthy",
         to: req.query.email,
-        subject: "Ответ на ваш отзыв",
+        subject: "Ответ на ваш отзыв. Администрация Strong And Healthy",
         text: "Уважаемый " + req.query.name + "! Ваш отзыв был принят! Спасибо!",
         html: "<b>Уважаемый " + req.query.name + "! Ваш отзыв был принят! Спасибо!</b>"
     }
