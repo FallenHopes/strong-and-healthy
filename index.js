@@ -47,7 +47,7 @@ app.get('/mail', (req, res) => {
         to: "strongandhealthyruss@gmail.com",
         subject: "Отзыв от " + req.query.name,
         text: "Отзыв: " + req.query.idea + "\n --------Конец отзыва------- \n Отвечать на ящик: " + req.query.email,
-        html: "<b>Отзыв:</b> " + req.query.idea + "\n --------<b>Конец отзыва</b>------- \n Отвечать на ящик: <b>" + req.query.email + "</b>"
+        html: "<b>Отзыв:</b><br> " + req.query.idea + " <br>--------<b>Конец отзыва</b>-------<br>Отвечать на ящик: <b>" + req.query.email + "</b>"
     }
     emailTransport.sendMail(mail, (error, response) => {
         if (error){
