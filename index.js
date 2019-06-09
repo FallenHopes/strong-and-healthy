@@ -20,6 +20,9 @@ app.get('/', (req, res) => {
 });
 
 app.get('/loadMess', (req, res) => {
+    var date = new Date();
+    date = date.setDate(date.getDate() - 1);
+    Mess.clearMess(date);
     var allmess = Mess.returnMess();
     var massBlocks = [];
     allmess.then(data => {

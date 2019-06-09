@@ -6,7 +6,17 @@ function appendMess(nick, mess, color, date){
 function returnMess(){
     return messages.findAll();
 }
+function clearMess(date){
+    messages.destroy({
+        where: {
+            createdAt:{
+                [Op.lte]: date
+            }
+        }
+    });
+}
 module.exports = {
     appendMess,
-    returnMess
+    returnMess,
+    clearMess
 }
