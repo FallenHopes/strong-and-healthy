@@ -1,4 +1,6 @@
 const { messages } = require('../models');
+const Sequelize = require('sequelize');
+const Op = Sequelize.Op;
 
 function appendMess(nick, mess, color, date){
     messages.create({nick: nick, mess: mess, date: date, color: color});
