@@ -21,7 +21,6 @@ app.get('/', (req, res) => {
 
 app.get('/loadMess', (req, res) => {
     var date = new Date();
-    date = date.setDate(date.getDate() - 1);
     console.log(date);
     Mess.clearMess(date);
     var allmess = Mess.returnMess();
