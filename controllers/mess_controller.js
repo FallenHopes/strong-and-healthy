@@ -10,7 +10,7 @@ function clearMess(date){
     messages.destroy({
         where: {
             createdAt:{
-                [Op.lte]: date
+                [Op.lt]: date
             }
         }
     });
