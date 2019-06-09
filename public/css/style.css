@@ -71,8 +71,7 @@ header h1{
 
 #calC{
     display: block;
-    margin: 0 auto;
-    margin-bottom: 20px;
+    margin: 40px auto 20px auto;
     width: 10%;
     font-weight: 700;
     text-align: center;
