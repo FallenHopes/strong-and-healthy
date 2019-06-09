@@ -1,5 +1,5 @@
 body{
-    font-family: 'Merriweather Sans', sans-serif;
+    font-family: 'PT Sans', sans-serif;
     background-color: wheat;
     padding: 0;
     margin: 0;
@@ -27,6 +27,7 @@ header h1{
 }
 .calculate{
     margin-bottom: 80px;
+    height: 50vh;
 }
 .calculate h2{
     text-align: center;
@@ -49,13 +50,16 @@ header h1{
 .diets{
     text-align: right;
 }
+.hum span, .diets span{
+    font-weight: 700;
+}
 .calculate input[type=text]{
     float: left;
     text-align: center;
     width: 90%;
     height: 95%;
     outline: none;
-    font-weight: bold;
+    font-weight: 700;
     border: none;
     border: 1px solid black;
 }
@@ -69,15 +73,21 @@ header h1{
 #calC{
     display: block;
     margin: 0 auto;
+    margin-bottom: 20px;
     width: 10%;
+    font-weight: 700;
     text-align: center;
     text-decoration: none;
-    color: #5a1430;
+    color: black;
     background-color: #76c248;
     height: .01px;
     overflow: hidden;
-    transition: all .5s ease-in-out;
+    transition: all .2s ease-in-out;
     cursor: pointer;
+}
+#calC:hover{
+    background-color: black;
+    color: white;
 }
 .news, .lifehacks{
     width: 50%;
@@ -99,7 +109,7 @@ header h1{
     margin: 0 auto;
 }
 .news_wrap::-webkit-scrollbar{
-    margin-left: 40px;
+    margin-left: 15px;
     background-color: #76c248;
     border-radius: 25px;
     width: 3px;
@@ -111,7 +121,7 @@ header h1{
 footer{
     text-align: center;
     background-color: #43811d;
-    padding-bottom: 80px;
+    padding-bottom: 25px;
     color: white;
 }
 footer h1{
@@ -135,10 +145,14 @@ footer img{
     height: 40px;
     background: linear-gradient(45deg, red, black);
     line-height: 40px;
+    font-weight: 700;
     padding: 5px;
     cursor: pointer;
     margin-bottom: 10px;
     border-radius: 15px;
+}
+#footer_btn:hover{
+    background: linear-gradient(45deg, black, red);
 }
 .footer_contacts_href{
     overflow: hidden;
@@ -146,15 +160,16 @@ footer img{
 }
 .footer_contacts_href a{
     display: block;
-    height: 30px;
-    width: 50%;
+    height: 25px;
+    width: 40%;
     margin: 0 auto;
+    margin-bottom: 10px;
 }
 .close{
     height: .01px;
 }
 .open{
-    height: 80px;
+    height: 70px;
 }
 .new span, .lifehack span{
     text-decoration: underline;
@@ -179,6 +194,7 @@ footer img{
     margin-top: 10%;
     text-decoration: none;
     color: black;
+    font-weight: 700;
     background-color: white;
     border: 1px solid black;
     transition: all .1s ease-in-out;
@@ -219,6 +235,7 @@ footer img{
 #goBack{
     display: none;
     width: 35%;
+    font-weight: 700;
     margin: 0 auto;
     margin-top: 30px;
     text-align: center;
@@ -242,7 +259,7 @@ footer img{
     color: red;
 }
 .lifehacks_wrap::-webkit-scrollbar{
-    margin-left: 40px;
+    margin-left: 15px;
     background-color: red;
     border-radius: 25px;
     width: 3px;
@@ -281,7 +298,7 @@ footer img{
 {
     height: .01px;
     font-size: 15px;
-    font-weight: bold;
+    font-weight: 700;
     color: red;
     width: 100%;
     text-align: center;
@@ -289,8 +306,9 @@ footer img{
     transition: all .2s ease-in-out;
 }
 .mess{
-    width: 90%;
+    width: 98%;
     color: wheat;
+    border-bottom: 2px solid white;
 }
 .mess h2{
     display: block;
@@ -307,14 +325,16 @@ footer img{
 }
 .mess p{
     word-wrap: break-word;
+    font-size: 20px;
+    font-weight: 700;
 }
 #send{
     display: block;
-    height: 50px;
-    width: 80%;
+    height: 40px;
+    width: 70%;
     margin: 0 auto;
     margin-top: 15px;
-    font-size: 30px;
+    font-size: 25px;
     font-family: 'Macondo Swash Caps', cursive;
     margin-bottom: 90px;
     outline: none;
@@ -324,7 +344,7 @@ footer img{
     overflow-y: scroll;
 }
 .container_for_mess::-webkit-scrollbar{
-    margin-left: 40px;
+    margin-left: 15px;
     background-color: #76c248;
     border-radius: 25px;
     width: 3px;
@@ -369,7 +389,7 @@ footer img{
     border: 2px solid black;
     border-radius: 15px;
     font-size: 20px;
-    font-weight: bold;
+    font-weight: 700;
     transition: all .5s ease-in-out;
     outline: none;
 }
@@ -388,6 +408,7 @@ nav span{
     border-bottom: 2px solid black;
     padding: 15px;
     cursor: pointer;
+    font-weight: 700;
 }
 nav span:hover{
     background-color: black;

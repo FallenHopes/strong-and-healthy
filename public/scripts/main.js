@@ -268,13 +268,9 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('gender').classList.remove('danger');
             possible[2] = 0;
         }
-        for (var i = 0; i < possible.length; i++) {
-            if (possible[i] === 0) {
-                go = true;
-            }
-            else {
-                go = false;
-            }
+        if (possible[0] === 0 && possible[1] === 0 && possible[2] === 0)
+        {
+            go = true;
         }
         if (go) {
             document.getElementById('calC').style.padding = "5px";
