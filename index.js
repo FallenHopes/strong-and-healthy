@@ -77,6 +77,13 @@ app.get('/mail', (req, res) => {
     res.send("Отзыв отправлен! Информация о доставке отправлена на ваш электронный ящик!");
 });
 
+app.get('/:something', (req, res) => {
+    if (req.params.something !== '' && req.params.something !== 'loadMess' && req.params.something !== 'mail')
+    {
+        res.sendFile(__dirname + "/404.html");
+    }
+});
+
 connections = [];
 
 io.sockets.on('connection', (socket) => {
