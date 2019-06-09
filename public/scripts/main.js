@@ -374,7 +374,7 @@ document.addEventListener('DOMContentLoaded', () => {
             counterOfMess = 0;
         }
     });
-    document.getElementsByClassName('forum')[0].addEventListener('keypress', (e) => {
+    document.getElementsByClassName('forum')[0].addEventListener('keypress', e => {
         if (e.keyCode === 13) {
             e.preventDefault();
             var blockofmess = document.getElementsByClassName('container_for_mess')[0];
@@ -401,6 +401,45 @@ document.addEventListener('DOMContentLoaded', () => {
                     spam = new Date();
                 }
             }
+        }
+    });
+    document.getElementsByClassName('ideas')[0].addEventListener('keypress', e => {
+        if (e.keyCode === 13)
+        {
+            e.preventDefault();
+            var name = $('#personname').val().trim();
+            var email = $('#personemail').val().trim();
+            var idea = $('#idea').val();
+            if (name.match(/^[А-я]*$/) === null) {
+                $('#errorIdea').text("Введите корректное имя");
+                return false;
+            }
+            else if (email.match(/^[a-zA-Z0-9_.-]+@[a-z]{2,10}\.[a-z]{2,4}$/) === null) {
+                $('#errorIdea').text("Введите корректный email");
+                return false;
+            }
+            else if (idea.length < 10) {
+                $('#errorIdea').text("Введите сообщение не менее 10 символов")
+                return false;
+            }
+            $('#errorIdea').text("");
+            $.ajax({
+                url: '/mail',
+                data: { 'name': name, 'email': email, 'idea': idea },
+                beforeSend: function () {
+                    $('#sendIdea').prop("disable", true);
+                },
+                success: function (data) {
+                    if (!data) {
+                        alert('Не удалось отправить запрос на сервер!');
+                    }
+                    else {
+                        $('form').trigger("reset");
+                        alert(data);
+                    }
+                    $('#sendIdea').prop("disable", false);
+                }
+            });
         }
     });
     $.ajax({
