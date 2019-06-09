@@ -20,13 +20,7 @@ app.get('/', (req, res) => {
 });
 
 app.get('/loadMess', (req, res) => {
-    Mess.clearMess().then(result => {
-        console.log("Бд успешно почистилась");
-    }).catch(error => {
-        alert("Возникла ошибка на сервере!");
-        console.log("Ошибка при попытке почистить сообщения в бд");
-        console.log(error);
-    });
+    Mess.clearMess();
     var allmess = Mess.returnMess();
     var massBlocks = [];
     allmess.then(data => {
@@ -93,13 +87,7 @@ io.sockets.on('connection', (socket) => {
     socket.on('send', (data) => {
         var date = new Date();
         var elem = createForumMessage(data.nick, data.mess, data.colorClass, generateDateString(date));
-        Mess.appendMess(data.nick, data.mess, data.colorClass, generateDateString(date)).then(result => {
-            console.log("Сообщение помещено в базу данных!");  
-        }).catch(error => {
-            alert("Возникли неполадки на сервере!");
-            console.log("Ошибка при попытке положить сообщение в БД");
-            console.log(error);
-        });
+        Mess.appendMess(data.nick, data.mess, data.colorClass, generateDateString(date));
         io.sockets.emit('add', {textForBlock: elem});
     });
 });
