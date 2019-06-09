@@ -381,22 +381,16 @@ footer img{
     margin-top: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
+/* Менюшка */
 nav span{
     border: 2px solid black;
     border-bottom: 2px solid black;
     padding: 15px;
     cursor: pointer;
+}
+nav span:hover{
+    background-color: black;
+    color: white;
 }
 .selected{
     color: black;
@@ -410,6 +404,8 @@ nav span{
     display: flex;
     justify-content: space-between;
 }
+/* Менюшка */
+
 
 @media (max-width: 1024px)
 {
