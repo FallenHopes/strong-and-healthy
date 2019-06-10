@@ -115,6 +115,23 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+    $('.lifehack_read').on('click', (e) => {
+        var blockLife = e.target.parentElement;
+        var fullLife = document.getElementsByClassName('fullLifehack');
+        var allLifes = document.getElementsByClassName('lifehack');
+        var header = document.getElementsByClassName('lifehacks')[0].getElementsByTagName('h1')[0];
+        for (var i = 0; i < allLifes.length; i++)
+        {
+            if (allLifes[i] === blockLife)
+            {
+                document.getElementsByClassName('lifehacks_wrap')[0].setAttribute('hidden', 'true');
+                header.textContent = blockLife.getElementsByTagName('h1')[0].textContent;
+                fullLife[i].removeAttribute('hidden');
+                fullLife[i].scrollTop = 0;
+                document.getElementById('goBackL').style.display = "block";
+            }
+        }
+    });
     $('#goBack').on('click', e => {
         var fullNew = document.getElementsByClassName('fullNew');
         for (var i = 0; i < fullNew.length; i++)
@@ -123,6 +140,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         document.getElementsByClassName('news_wrap')[0].removeAttribute('hidden');
         document.getElementsByClassName('news')[0].getElementsByTagName('h1')[0].textContent = "НОВОСТНАЯ ЛЕНТА";
+        e.target.style.display = "none";
+    });
+    $('#goBackL').on('click', e => {
+        var fullLife = document.getElementsByClassName('fullLifehack');
+        for (var i = 0; i < fullLife.length; i++)
+        {
+            fullLife[i].setAttribute('hidden', 'true');
+        }
+        document.getElementsByClassName('lifehacks_wrap')[0].removeAttribute('hidden');
+        document.getElementsByClassName('lifehacks')[0].getElementsByTagName('h1')[0].textContent = "ЭТО ИНТЕРЕСНО:";
         e.target.style.display = "none";
     });
     var dangerBlock = document.getElementById('dangersMessages');
