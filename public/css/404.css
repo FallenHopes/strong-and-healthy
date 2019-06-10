@@ -1,0 +1,76 @@
+body{
+    font-family: 'PT Sans', sans-serif;
+    background-color: #76c248;
+    text-align: center;
+}
+.error_wrap{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 40%;
+    margin: 0 auto;
+}
+.error_wrap h1:first-child{
+    color: red;
+    font-size: 80px;
+}
+.error_wrap h1:last-child{
+    color: rgba(56, 13, 13, 0.575);
+    font-size: 80px;
+    margin-left: 40px;
+}
+
+h2{
+    color: wheat;
+    font-size: 40px;
+    width: 70%;
+    margin: 0 auto;
+}
+span{
+    display: flex;
+    align-items: center;
+    width: 185px;
+    margin: 50px auto 0 auto; 
+    font-size: 40px;
+    cursor: pointer;
+    font-weight: 700;
+    background-color: white;
+    padding: 10px;
+    border-radius: 15px;
+    transition: all .2s ease-in-out;
+}
+span:hover{
+    background-color: black;
+    color: white;
+}
+span img{
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+}
+
+@media(max-width: 750px){
+    .error_wrap{
+        display: block;
+        text-align: center;
+    }
+    .error_wrap h1:first-child{
+        margin-bottom: 5px;
+    }
+    .error_wrap h1:last-child{
+        margin: 0;
+        margin-bottom: 10px;
+    }
+}
+@media(max-width: 400px)
+{
+    .error_wrap h1:first-child{
+        font-size: 50px;
+    }
+    .error_wrap h1:last-child{
+        font-size: 50px;
+    }
+    h2{
+        font-size: 20px;
+    }
+}
