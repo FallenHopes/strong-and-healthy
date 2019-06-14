@@ -39,6 +39,7 @@ app.get('/loadMess', (req, res) => {
 });
 
 app.post('/mail', (req, res) => {
+    console.log(req);
     var mail = {
         from: "Администрация Strong And Healthy",
         to: req.body.email,
