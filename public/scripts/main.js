@@ -82,6 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
         $('#errorIdea').text("");
         $.ajax({
             url: '/mail',
+            type: 'POST',
             data: { 'name': name, 'email': email, 'idea': idea },
             beforeSend: function () {
                 $('#sendIdea').prop("disable", true);
