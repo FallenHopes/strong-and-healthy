@@ -15,7 +15,7 @@ const port = process.env.PORT || 3000;
 const Mess = require('./controllers/mess_controller');
 server.listen(port);
 
-app.use(express.bodyParser());
+app.use(bParser.json());
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
