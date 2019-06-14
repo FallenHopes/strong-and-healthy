@@ -15,7 +15,6 @@ const port = process.env.PORT || 3000;
 const Mess = require('./controllers/mess_controller');
 server.listen(port);
 
-app.use(bParser.json());
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -40,22 +39,20 @@ app.get('/loadMess', (req, res) => {
     });
 });
 
-app.post('/mail', (req, res) => {
-    console.log(req);
-    console.log(req.body);
+app.get('/mail', (req, res) => {
     var mail = {
         from: "Администрация Strong And Healthy",
-        to: req.body.email,
+        to: req.query.email,
         subject: "Ответ на ваш отзыв. Администрация Strong And Healthy",
-        text: "Уважаемый " + req.body.name + "! Ваш отзыв был принят! Спасибо!",
-        html: htmlForResponse(req.body.name)
+        text: "Уважаемый " + req.query.name + "! Ваш отзыв был принят! Спасибо!",
+        html: htmlForResponse(req.query.name)
     }
     var mailToMe = {
         from: "Администрация Strong And Healthy",
         to: "strongandhealthyruss@gmail.com",
-        subject: "Отзыв от " + req.body.name,
-        text: "Отзыв: " + req.body.idea + "\n --------Конец отзыва------- \n Отвечать на ящик: " + req.query.email,
-        html: "<b>Отзыв:</b><br> " + req.body.idea + " <br>--------<b>Конец отзыва</b>-------<br>Отвечать на ящик: <b>" + req.query.email + "</b>"
+        subject: "Отзыв от " + req.query.name,
+        text: "Отзыв: " + req.query.idea + "\n --------Конец отзыва------- \n Отвечать на ящик: " + req.query.email,
+        html: "<b>Отзыв:</b><br> " + req.query.idea + " <br>--------<b>Конец отзыва</b>-------<br>Отвечать на ящик: <b>" + req.query.email + "</b>"
     }
     emailTransport.sendMail(mail, (error, response) => {
         if (error){
