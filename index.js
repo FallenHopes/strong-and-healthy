@@ -20,7 +20,7 @@ app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
 
-app.get('/loadMess', (req, res) => {
+app.post('/loadMess', (req, res) => {
     Mess.clearMess();
     var allmess = Mess.returnMess();
     var massBlocks = [];
@@ -40,7 +40,6 @@ app.get('/loadMess', (req, res) => {
 });
 
 app.post('/mail', (req, res) => {
-    console.log(req.body);
     var mail = {
         from: "Администрация Strong And Healthy",
         to: req.body.email,
@@ -80,7 +79,7 @@ app.post('/mail', (req, res) => {
 });
 
 app.get('/:something', (req, res) => {
-    if (req.params.something !== '' && req.params.something !== 'loadMess' && req.params.something !== 'mail')
+    if (req.params.something !== '')
     {
         res.sendFile(__dirname + "/404.html");
     }

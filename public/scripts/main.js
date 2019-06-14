@@ -449,6 +449,7 @@ document.addEventListener('DOMContentLoaded', () => {
             $('#errorIdea').text("");
             $.ajax({
                 url: '/mail',
+                type: 'POST',
                 data: { 'name': name, 'email': email, 'idea': idea },
                 beforeSend: function () {
                     $('#sendIdea').prop("disable", true);
@@ -468,6 +469,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     $.ajax({
         url: '/loadMess',
+        type: 'POST',
         success: data => {
             var massOfMess = JSON.parse(data);
             for (var i = 0; i < massOfMess.length; i++)
