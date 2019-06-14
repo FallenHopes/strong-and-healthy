@@ -3,6 +3,7 @@ var app = express();
 var server = require('http').createServer(app);
 var io = require('socket.io').listen(server);
 var mailer = require("nodemailer");
+var bParser = require('body-parser');
 var emailTransport = mailer.createTransport({
     service: "Gmail",
     auth: {
@@ -14,6 +15,7 @@ const port = process.env.PORT || 3000;
 const Mess = require('./controllers/mess_controller');
 server.listen(port);
 
+app.use(express.bodyParser());
 app.use(express.static('./public'));
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
@@ -39,7 +41,6 @@ app.get('/loadMess', (req, res) => {
 });
 
 app.post('/mail', (req, res) => {
-    console.log(req);
     var mail = {
         from: "Администрация Strong And Healthy",
         to: req.body.email,
