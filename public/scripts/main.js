@@ -402,9 +402,12 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!onFocusMessages)
         {
             timerForMessages = setInterval((counterOfMess) => {
-                if (document.title !== "Strong And Healthy")
+                if (document.title === "Strong And Healthy")
                 {
                     document.title = "(" + counterOfMess + ") новых сообщений";
+                }
+                else{
+                    document.title = "Strong And Healthy";
                 }
             }, 1000)
         }
