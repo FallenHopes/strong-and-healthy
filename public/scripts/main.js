@@ -399,23 +399,23 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('forum').textContent = "ФОРУМ";
             counterOfMess = 0;
         }
-        if (!onFocusMessages)
-        {
-            timerForMessages = setInterval(counterOfMess => {
-                if (document.title === "Strong And Healthy")
-                {
-                    document.title = "(" + counterOfMess + ") новых сообщений";
-                }
-                else{
-                    document.title = "Strong And Healthy";
-                }
-            }, 1000)
-        }
-        else if(onFocusMessages)
-        {
-            clearInterval(timerForMessages);
-            document.title = "Strong And Healthy";
-        }
+        // if (!onFocusMessages)
+        // {
+        //     timerForMessages = setInterval(counterOfMess => {
+        //         if (document.title === "Strong And Healthy")
+        //         {
+        //             document.title = "(" + counterOfMess + ") новых сообщений";
+        //         }
+        //         else{
+        //             document.title = "Strong And Healthy";
+        //         }
+        //     }, 1000)
+        // }
+        // else if(onFocusMessages)
+        // {
+        //     clearInterval(timerForMessages);
+        //     document.title = "Strong And Healthy";
+        // }
     });
     document.getElementsByClassName('forum')[0].addEventListener('keypress', e => {
         if (e.keyCode === 13) {
@@ -498,13 +498,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    window.addEventListener('focus', () => {
-        onFocusMessages = true;
-        document.title = "Strong And Healthy";
-    });
-    window.addEventListener('blur', () => {
-        onFocusMessages = false;
-    });
+    // window.addEventListener('focus', () => {
+    //     onFocusMessages = true;
+    //     document.title = "Strong And Healthy";
+    // });
+    // window.addEventListener('blur', () => {
+    //     onFocusMessages = false;
+    // });
 });
 
 function IndexOfMass(mass, height, gender) {
