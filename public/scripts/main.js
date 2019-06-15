@@ -480,17 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
-    window.addEventListener('blur', () => {
-        var bomCounter = 0;
-        socket.on('add', data => {
-            bomCounter++;
-            document.title = "(" + bomCounter + ") новых сообщений";
-            console.log("потерянный фокус");
-        });
-    });
-    window.addEventListener('focus', () => {
-        document.title = "Strong And Healthy";
-    });
 });
 
 function IndexOfMass(mass, height, gender) {
