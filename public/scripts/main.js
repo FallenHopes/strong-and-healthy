@@ -398,14 +398,6 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('forum').textContent = "ФОРУМ";
             counterOfMess = 0;
         }
-        if (!window.onfocus)
-        {
-            timerForMessages = setInterval(signalOfMess(counterOfMess), 1000);
-        }
-        else{
-            clearInterval(timerForMessages);
-            document.title = "Strong And Healthy";
-        }
     });
     document.getElementsByClassName('forum')[0].addEventListener('keypress', e => {
         if (e.keyCode === 13) {
@@ -488,6 +480,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
     });
+    window.addEventListener('blur', () => {
+        var bomCounter = 0;
+        socket.on('add', data => {
+            bomCounter++;
+            document.title = "(" + bomCounter + ") новых сообщений";
+            console.log("потерянный фокус");
+        });
+    });
+    window.addEventListener('focus', () => {
+        document.title = "Strong And Healthy";
+    });
 });
 
 function IndexOfMass(mass, height, gender) {
@@ -541,15 +544,5 @@ function Kuper(height, gender) {
     }
     else if (gender === "female") {
         return "Ваш идеальный вес: " + Math.round((0.624 * height) - 48.9);
-    }
-}
-function signalOfMess(count)
-{
-    if (document.title === "Strong And Healthy")
-    {
-        document.title = '***(' + count + ')*** новых сообщений';
-    }
-    else{
-        document.title = 'Strong And Healthy';
     }
 }
