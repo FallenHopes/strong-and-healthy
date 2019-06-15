@@ -387,6 +387,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
     var counterOfMess = 0;
     var timerForMessages;
+    var onFocusMessages = true;
     socket.on('add', (data) => {
         blockofmess.insertAdjacentHTML('beforeend',data.textForBlock);
         blockofmess.scrollTo(100, blockofmess.scrollHeight);
@@ -397,6 +398,20 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
             document.getElementById('forum').textContent = "ФОРУМ";
             counterOfMess = 0;
+        }
+        if (!onFocusMessages)
+        {
+            timerForMessages = setInterval((counterOfMess) => {
+                if (document.title !== "Strong And Healthy")
+                {
+                    document.title = "(" + counterOfMess + ") новых сообщений";
+                }
+            }, 1000)
+        }
+        else if(onFocusMessages)
+        {
+            clearInterval(timerForMessages);
+            document.title = "Strong And Healthy";
         }
     });
     document.getElementsByClassName('forum')[0].addEventListener('keypress', e => {
@@ -479,6 +494,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 blockofmess.scrollTo(100, blockofmess.scrollHeight);
             }
         }
+    });
+    window.addEventListener('focus', () => {
+        onFocusMessages = true;
+    });
+    window.addEventListener('blur', () => {
+        onFocusMessages = false;
     });
 });
 
