@@ -386,6 +386,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
     var counterOfMess = 0;
+    var timerForMessages;
     socket.on('add', (data) => {
         blockofmess.insertAdjacentHTML('beforeend',data.textForBlock);
         blockofmess.scrollTo(100, blockofmess.scrollHeight);
@@ -396,6 +397,14 @@ document.addEventListener('DOMContentLoaded', () => {
         else {
             document.getElementById('forum').textContent = "ФОРУМ";
             counterOfMess = 0;
+        }
+        if (!window.onfocus)
+        {
+            timerForMessages = setInterval(signalOfMess(counterOfMess), 1000);
+        }
+        else{
+            clearInterval(timerForMessages);
+            document.title = "Strong And Healthy";
         }
     });
     document.getElementsByClassName('forum')[0].addEventListener('keypress', e => {
@@ -532,5 +541,15 @@ function Kuper(height, gender) {
     }
     else if (gender === "female") {
         return "Ваш идеальный вес: " + Math.round((0.624 * height) - 48.9);
+    }
+}
+function signalOfMess(count)
+{
+    if (document.title === "Strong And Healthy")
+    {
+        document.title = '***(' + count + ')*** новых сообщений';
+    }
+    else{
+        document.title = 'Strong And Healthy';
     }
 }
