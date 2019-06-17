@@ -16,6 +16,7 @@ const Mess = require('./controllers/mess_controller');
 server.listen(port);
 app.use(bParser.urlencoded({extended: true}));
 app.use(express.static('./public'));
+
 app.get('/', (req, res) => {
     res.sendFile(__dirname + '/index.html');
 });
